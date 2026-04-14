@@ -19,12 +19,14 @@ public class LoginExecuteAction extends Action {
 		teacher = tDao.login(id,password);
 //		if	文
 		if(teacher == null) {
+			req.setAttribute("error-text", "ログインに失敗しました。IDまたはパスワードが正しくありません。");
+			req.getRequestDispatcher("Login.action").forward(req, res);
+			return;
+			
+		}else {
 			teacher.setAuthenticated(true);
 			HttpSession session = req.getSession();
 			session.setAttribute("user", teacher);
-		}else {
-			req.getRequestDispatcher("Login.action").forward(req, res);
-			return;
 		}
 		
 		
