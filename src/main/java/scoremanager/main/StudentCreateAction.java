@@ -15,7 +15,7 @@ public class StudentCreateAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-		// HttpSession session = req.getSession(); // 本来のログイン処理
+		// HttpSession session = req.getSession(); // 本来ログイン処理
 		// Teacher teacher = (Teacher)session.getAttribute("user");
 
 		// 【テスト用】仮の学校情報を設定
