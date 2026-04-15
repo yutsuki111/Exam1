@@ -11,7 +11,7 @@
   <form action="LoginExecute.action" method="post" class="text-center">
 	<div class="row border mx-3 mb-3 py-2 align-items-center rounded ">
 	    <h2 class="mb-4">ログイン</h2>
-		${error-text }
+		<div class="text-center">${errortext }</div>
 	    <div class="mb-3">
 	      <input type="text" name="id" placeholder="id" 
 	             class="form-control mx-auto" style="max-width: 250px;" required>
@@ -50,4 +50,3 @@
 </c:param>
 
 </c:import>
-<

@@ -8,7 +8,13 @@
 	<c:param name="scripts"></c:param>
 	
 	<c:param name="content">
-	<a href="Login.action" class="text-center">ログイン</a>
+	<div >
+		<h2 class="bg-dark bg-opacity-10">ログアウト</h2>
+		<div class="text-center" style="background-color: #bdb;">
+		<p>ログアウトしました。</p>
+		</div>
+	</div>
+	<a href="Login.action" class="text-center" style="margin-top: 20px;">ログイン</a>
 	
 	</c:param>
 
