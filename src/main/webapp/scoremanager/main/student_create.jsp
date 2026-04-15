@@ -1,50 +1,71 @@
-<%-- メニューJSP --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+ 
+<%-- 共通テンプレートを読み込み --%>
+<c:import url="/common/base.jsp">
+<c:param name="title">得点管理システム</c:param>
+ 
+    <%-- メインコンテンツ部分 --%>
+<c:param name="content">
+<section class="me-4">
+<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
+ 
+            <form action="StudentCreateExecute.action" method="post" class="mx-4">
+<%-- 入学年度セレクトボックス --%>
+<div class="mb-3">
+<label for="ent-year-select" class="form-label">入学年度</label>
+<select class="form-select" id="ent-year-select" name="ent_year">
+<option value="0">--------</option>
+<c:forEach var="year" items="${ent_year_set}">
+<%-- エラー戻り時などの値保持 --%>
+<option value="${year}" <c:if test="${year == ent_year}">selected</c:if>>${year}</option>
+</c:forEach>
+</select>
+</div>
+ 
+                <%-- 学生番号入力テキスト --%>
+<div class="mb-3">
+<label for="student-no" class="form-label">学生番号</label>
+<input type="text" class="form-control" id="student-no" name="no" 
 
-<h2>学生情報登録</h2>
+                           value="${no}" maxlength="10" required 
 
-<form action="studentInsert" method="post">
+                           placeholder="学生番号を入力してください">
+<div class="text-warning">${errors.get("no")}</div>
+</div>
+ 
+                <%-- 氏名入力テキスト --%>
+<div class="mb-3">
+<label for="student-name" class="form-label">氏名</label>
+<input type="text" class="form-control" id="student-name" name="name" 
 
-    
-    <label>入学年度</label><br>
+                           value="${name}" maxlength="30" required 
 
-   
-    <select name="ent_year">
-        <c:forEach var="y" items="${entYearList}">
-            <option value="${y}">${y}</option>
-        </c:forEach>
-    </select>
-    <br><br>
-
-    <label>学生番号</label><br>
-
-    <input type="text"
-           name="no"
-           value="${no}"
-           placeholder="学生番号を入力してください">
-    <br><br>
-
-    <label>氏名</label><br>
-
-    <input type="text"
-           name="name"
-           value="${name}"
-           placeholder="氏名を入力してください">
-    <br><br>
-
-    <label>クラス</label><br>
-
-    <select name="class_num">
-        <c:forEach var="c" items="${classNumList}">
-            <option value="${c}">${c}</option>
-        </c:forEach>
-    </select>
-    <br><br>
-
-    <button type="submit" name="end" value="1">登録して終了</button>
-
+                           placeholder="氏名を入力してください">
+<div class="text-warning">${errors.get("name")}</div>
+</div>
+ 
+                <%-- クラスセレクトボックス --%>
+<div class="mb-3">
+<label for="class-num-select" class="form-label">クラス</label>
+<select class="form-select" id="class-num-select" name="class_num">
+<c:forEach var="num" items="${class_num_set}">
+<option value="${num}" <c:if test="${num == class_num}">selected</c:if>>${num}</option>
+</c:forEach>
+</select>
+</div>
+ 
+                <%-- 登録して終了ボタン --%>
+<div class="mt-4">
+<button type="submit" class="btn btn-secondary" name="end" value="15">登録して終了</button>
+</div>
 </form>
-
-<a href="studentList">戻る</a>
+ 
+            <%-- 戻るリンク --%>
+<div class="mx-4 mt-3">
+<a href="StudentList.action">戻る</a>
+</div>
+</section>
+</c:param>
+</c:import>
+ 
