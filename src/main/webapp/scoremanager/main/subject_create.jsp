@@ -25,7 +25,7 @@
     </div>
 	</form>
 	<div class="mb-3">
-	<a href="subject_list.jsp">戻る</a>
+	<a href="SubjectList.action">戻る</a>
 	</c:param>
 
 </c:import>
