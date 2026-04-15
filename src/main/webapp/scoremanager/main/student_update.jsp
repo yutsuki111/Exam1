@@ -22,10 +22,10 @@
 				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
 					
 					<%-- 入学年度の選択プルダウン --%>
-					<div class="col-2">
-						<label class="form-label" for="student-f1-select">入学年度</label>
+					<div class="mb-3">
+						<label class="form-label">入学年度</label>
 						<form action="aaa" method="post">
-							<br><input type="nendo" name="ent_year">
+						<br><input type="nendo" name="ent_year">
 							<%-- Actionクラスから渡された ent_year_set（年度リスト）をループで回す --%>
 							<c:forEach var="year" items="${ent_year }">
 								<%-- 検索後の再表示時、選択していた年度を保持（selected）する --%>
@@ -33,12 +33,12 @@
 							</c:forEach>
 						
 					</div>
-
+					<br>
 					<%-- クラス番号の選択プルダウン --%>
-					<div class="col-2">
-						<label class="form-label" for="student-f2-select">学生番号</label>
+					<div class="mb-3">
+						<label class="form-label">学生番号</label>
 						<form action="bbb" method="post">
-							<br><input type="bango" name="no">
+						<br><input type="bango" name="no">
 							<%-- Actionから渡された class_num_set（クラス一覧）をループで回す --%>
 							<c:forEach var="num" items="${no }">
 								<%-- 検索後の再表示時、選択していたクラスを保持（selected）する --%>
@@ -46,9 +46,33 @@
 							</c:forEach>
 						
 					</div>
+					<br>
+					<div class="mb-3">
+						<label class="form-label">氏名</label>
+						<form action="ccc" method="post">
+						<br><input type="simei" name="name" style="width: 400px;">
+							<%-- Actionから渡された class_num_set（クラス一覧）をループで回す --%>
+							<c:forEach var="num" items="${name }">
+								<%-- 検索後の再表示時、選択していたクラスを保持（selected）する --%>
+								<option value="${num }" <c:if test="${num == f2 }">selected</c:if>>${num }</option>
+							</c:forEach>
+						
+					</div>
 
+					<div class="mb-3">
+						<label class="form-label">クラス</label>
+						<select name="class_num" class="form-select">
+							<option value="0">--------</option>
+							<%-- Actionから渡された class_num_set（クラス一覧）をループで回す --%>
+							<c:forEach var="num" items="${class_num_set }">
+								<%-- 検索後の再表示時、選択していたクラスを保持（selected）する --%>
+								<option value="${num }" <c:if test="${num == f2 }">selected</c:if>>${num }</option>
+							</c:forEach>
+						</select>
+					</div>
+					
 					<%-- 在学中チェックボックス --%>
-					<div class="col-2 form-check text-center">
+					<div class="mb-3">
 						<label class="form-check-label" for="student-f3-check">在学中
 							<%-- パラメーターf3（チェック状態）が存在する場合、チェックを入れたまま（checked）にする --%>
 							<input class="form-check-input" type="checkbox"
@@ -58,55 +82,15 @@
 					</div>
 
 					<%-- 絞込み実行ボタン --%>
-					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="filter-button">絞込み</button>
+					<div class="mb-3">
+						<button type="submit" class="btn btn-primary">変更</button>
 					</div>
-
-					<%-- 入力エラー（例：クラスのみ選択して年度が未選択の場合など）を表示 --%>
-					<div class="mt-2 text-warning">${errors.get("f1") }</div>
+			
+					<div class="mt-3">
+						<a href="StudentList.action">戻る</a>
+					</div>
 				</div>
 			</form>
-
-			<%-- 学生リストの表示判定 --%>
-			<c:choose>
-				<%-- 1件以上見つかった場合 --%>
-				<c:when test="${students.size() > 0 }">
-					<div>検索結果：${students.size() }件</div>
-					<table class="table table-hover">
-						<tr>
-							<th>入学年度</th>
-							<th>学生番号</th>
-							<th>氏名</th>
-							<th>クラス</th>
-							<th class="text-center">在学中</th>
-							<th></th>
-						</tr>
-						<%-- 学生リスト(students)を1つずつstudent変数に取り出して表示 --%>
-						<c:forEach var="student" items="${students }">
-							<tr>
-								<td>${student.entYear }</td>
-								<td>${student.no }</td>
-								<td>${student.name }</td>
-								<td>${student.classNum }</td>
-								<td class="text-center">
-									<%-- 在学フラグ(isAttend)がtrueなら「◯」、falseなら「×」 --%>
-									<c:choose>
-										<c:when test="${student.isAttend() }">◯</c:when>
-										<c:otherwise>×</c:otherwise>
-									</c:choose>
-								</td>
-								<%-- 学生番号(no)をパラメータとして渡し、編集画面へ遷移 --%>
-								<td><a href="StudentUpdate.action?no=${student.no }">変更</a></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</c:when>
-				
-				<%-- 検索結果が0件だった場合 --%>
-				<c:otherwise>
-					<div class="alert alert-info">学生情報が存在しませんでした。</div>
-				</c:otherwise>
-			</c:choose>
 		</section>
 	</c:param>
 </c:import>
