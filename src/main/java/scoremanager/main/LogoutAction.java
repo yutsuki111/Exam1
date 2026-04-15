@@ -13,6 +13,6 @@ public class LogoutAction extends Action {
 		if (session != null) {
 			session.invalidate();
 		}
-		req.getRequestDispatcher("main/logout.jsp").forward(req, res);
+		req.getRequestDispatcher("logout.jsp").forward(req, res);
 	}
 }
