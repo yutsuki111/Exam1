@@ -26,8 +26,7 @@
 		</tr>
 		<c:forEach var="s" items="${subjects }">
 		<tr>
-		<td>a</td>
-		<td>${}</td>
+		<td>${s.cd }</td>
 		</tr>
 		</c:forEach>
 		
