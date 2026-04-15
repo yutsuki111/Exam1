@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>登録完了</title>
 </head>
 <body>
+
+<!-- 登録完了 -->
+<p>追加に成功しました</p>
+
+<!-- メニュー画面へ戻る -->
+<a href="menu.jsp">メニュー</a>
 
 </body>
 </html>
