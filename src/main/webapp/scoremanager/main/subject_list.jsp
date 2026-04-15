@@ -23,10 +23,18 @@
 		<tr>
 		<th>科目コード</th>
 		<th>科目名</th>
+		
 		</tr>
 		<c:forEach var="s" items="${subjects }">
 		<tr>
 		<td>${s.cd}</td>
+		<td>${s.name }</td>
+		<td>
+		<a href="SubjectUpdate.action">変更</a>
+		</td>
+		<td>
+		<a href="SubjectDelete.action">削除</a>
+		</td>
 		</tr>
 		</c:forEach>
 		
