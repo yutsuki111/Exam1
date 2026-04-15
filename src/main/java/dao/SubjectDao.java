@@ -4,35 +4,36 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.School;
 import bean.Subject;
 
 public class SubjectDao extends Dao {
 
-	public Subject get(String cd , School school) throws Exception {
-		Subject subject = new Subject();
+	public List<Subject> filter(School school) throws Exception {
+		
 		// データベースへのコネクションを確率
 		Connection connection = getConnection();
 		// プリペアードステートメント
 		PreparedStatement statement = null;
+		List<Subject> list = new ArrayList<>();
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from school where cd = ? and school_cd = ?");
-			statement.setString(1, cd);
-			statement.setString(2, school.getCd());
+			statement = connection.prepareStatement("select * from subject where school_cd = ?");
+			statement.setString(1, school.getCd());
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 			// 学校Daoを初期化
 			SchoolDao sDao = new SchoolDao();
-			if (rSet.next()) {
+			while (rSet.next()) {
+				Subject subject = new Subject();
 				subject.setCd(rSet.getString("cd"));
 				subject.setName(rSet.getString("name"));
 				subject.setSchool(sDao.get(rSet.getString("school_cd")));
-			} else {
-				// 存在しない場合
-				subject = null;
+				list.add(subject);
 			}
 		} catch (Exception e) {
 			throw e;
@@ -54,6 +55,6 @@ public class SubjectDao extends Dao {
 				}
 			}
 		}
-		return subject;
+		return list;
 	}
 }
