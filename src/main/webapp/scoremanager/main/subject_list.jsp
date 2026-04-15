@@ -27,7 +27,7 @@
 		<c:forEach var="s" items="${subjects }">
 		<tr>
 		<td>a</td>
-		<td>${s. }</td>
+		<td>${}</td>
 		</tr>
 		</c:forEach>
 		
