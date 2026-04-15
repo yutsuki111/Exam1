@@ -10,7 +10,7 @@
 
             <form action="StudentUpdateExecute.action" method="post" class="mx-4">
                 
-                <%-- 入学年度 (readonly) --%>
+                <%-- 入学年度 (readonly: 設計書に基づき編集不可) --%>
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label fw-bold">入学年度</label>
                     <div class="col-sm-4">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <%-- 学生番号 (readonly) --%>
+                <%-- 学生番号 (readonly: 設計書に基づき編集不可) --%>
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label fw-bold">学生番号</label>
                     <div class="col-sm-4">
@@ -28,13 +28,17 @@
                     </div>
                 </div>
 
-                <%-- 氏名 --%>
+                <%-- 氏名 (必須入力・最大30文字) --%>
                 <div class="mb-3 row">
                     <label for="student-name" class="col-sm-2 col-form-label fw-bold">氏名</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="student-name" name="name" 
-                               value="${student.name}" maxlength="30" required>
-                        <div class="text-warning">${errors.get("name")}</div>
+                               value="${student.name}" maxlength="30" required 
+                               placeholder="氏名を入力してください">
+                        <%-- 氏名未入力等のエラー表示 --%>
+                        <c:if test="${not empty errors.get('name')}">
+                            <div class="text-danger small mt-1">${errors.get("name")}</div>
+                        </c:if>
                     </div>
                 </div>
 
@@ -44,7 +48,6 @@
                     <div class="col-sm-4">
                         <select class="form-select" id="student-class" name="class_num">
                             <c:forEach var="num" items="${class_num_set}">
-                                <%-- studentの持つ現在のクラス番号と一致する場合にselected --%>
                                 <option value="${num}" <c:if test="${num == student.classNum}">selected</c:if>>${num}</option>
                             </c:forEach>
                         </select>
@@ -56,7 +59,6 @@
                     <div class="col-sm-2 fw-bold">在学中</div>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <%-- Student BeanのisAttend()がtrueならchecked --%>
                             <input class="form-check-input" type="checkbox" id="student-is-attend" 
                                    name="is_attend" value="t" <c:if test="${student.isAttend()}">checked</c:if>>
                             <label class="form-check-label" for="student-is-attend">在学中</label>
@@ -64,11 +66,13 @@
                     </div>
                 </div>
 
+                <%-- 変更ボタン --%>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary" name="login">変更</button>
                 </div>
             </form>
 
+            <%-- 戻るリンク --%>
             <div class="mx-4 mt-3">
                 <a href="StudentList.action">戻る</a>
             </div>
