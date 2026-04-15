@@ -10,7 +10,7 @@
 	<c:param name="content">
 	<div >
 		<h2 class="bg-dark bg-opacity-10">ログアウト</h2>
-		<div class="text-center" style="background-color: #bdb;">
+		<div class="text-center" style="background-color: #6EC8B5;">
 		<p>ログアウトしました。</p>
 		</div>
 	</div>
