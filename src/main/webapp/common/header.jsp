@@ -8,6 +8,6 @@
 <c:if test="${user.isAuthenticated()}">
 	<div class="nav align-self-end">
 		<span class="nav-item px-2">${user.getName()}様</span>
-		<a class="nav-item px-2" href="main.Loginout.action">ログアウト</a>
+		<a class="nav-item px-2" href="main.Logout.action">ログアウト</a>
 	</div>
 </c:if>
