@@ -1,5 +1,5 @@
 <%-- 
-    学生一覧表示画面
+    a学生一覧表示画面
     機能：入学年度、クラス、在学状況での絞り込みと、該当する学生の一覧表示
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
