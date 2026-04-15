@@ -1,17 +1,17 @@
-<%-- 
+<%--
     学生一覧表示画面
     機能：入学年度、クラス、在学状況での絞り込みと、該当する学生の一覧表示
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-
+ 
 <%-- 共通テンプレート（base.jsp）を読み込み、ページ全体のレイアウトを適用 --%>
 <c:import url="/common/base.jsp" >
 	<%-- ページのタイトルをパラメータとして渡す --%>
 	<c:param name="title">得点管理システム</c:param>
-
+ 
 	<c:param name="scripts"></c:param>
-
+ 
 	<%-- メインコンテンツ部分の定義 --%>
 	<c:param name="content">
 		<section class="me=4">
@@ -21,7 +21,7 @@
 			<div class="my-2 text-end px-4">
 				<a href="StudentCreate.action">新規登録</a>
 			</div>
-
+ 
 			<%-- 検索・絞り込みフォーム --%>
 			<form method="get">
 				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
@@ -38,7 +38,7 @@
 							</c:forEach>
 						</select>
 					</div>
-
+ 
 					<%-- クラス番号の選択プルダウン --%>
 					<div class="col-4">
 						<label class="form-label" for="student-f2-select">クラス</label>
@@ -51,7 +51,7 @@
 							</c:forEach>
 						</select>
 					</div>
-
+ 
 					<%-- 在学中チェックボックス --%>
 					<div class="col-2 form-check text-center">
 						<label class="form-check-label" for="student-f3-check">在学中
@@ -61,17 +61,17 @@
 							<c:if test="${!empty f3 }">checked</c:if> />
 						</label>
 					</div>
-
+ 
 					<%-- 絞込み実行ボタン --%>
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">絞込み</button>
 					</div>
-
+ 
 					<%-- 入力エラー（例：クラスのみ選択して年度が未選択の場合など）を表示 --%>
 					<div class="mt-2 text-warning">${errors.get("f1") }</div>
 				</div>
 			</form>
-
+ 
 			<%-- 学生リストの表示判定 --%>
 			<c:choose>
 				<%-- 1件以上見つかった場合 --%>
@@ -115,3 +115,5 @@
 		</section>
 	</c:param>
 </c:import>
+ 
+ 

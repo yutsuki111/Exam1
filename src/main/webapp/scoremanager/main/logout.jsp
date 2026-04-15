@@ -8,11 +8,11 @@
 	<c:param name="scripts"></c:param>
 	
 	<c:param name="content">
-	<div class="text-center">
-		<h2 class="row border mx-3 mb-3 py-2 align-items-center bg-dark bg-opacity-10">ログアウト</h2>
-		<label class="row border mx-3 align-items-center" style="background-color: #bdb;">
+	<div >
+		<h2 class="bg-dark bg-opacity-10">ログアウト</h2>
+		<div class="text-center" style="background-color: #6EC8B5;">
 		<p>ログアウトしました。</p>
-		</label>
+		</div>
 	</div>
 	<a href="Login.action" class="text-center" style="margin-top: 20px;">ログイン</a>
 	
