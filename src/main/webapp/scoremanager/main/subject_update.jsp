@@ -44,7 +44,7 @@
 
             <%-- 戻るリンク --%>
             <div class="mx-4 mt-3">
-                <a href="SubjectList.action">戻る</a>
+                <a href="subjectList.action">戻る</a>
             </div>
         </section>
     </c:param>
