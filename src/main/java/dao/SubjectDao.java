@@ -154,7 +154,7 @@ public Subject get(String cd ,School school) throws Exception {
 		}
 		return result;
 	}
-	public boolean dalete(Subject subject) throws Exception {
+	public boolean delete(Subject subject) throws Exception {
 		
 		// データベースへのコネクションを確率
 		Connection connection = getConnection();
