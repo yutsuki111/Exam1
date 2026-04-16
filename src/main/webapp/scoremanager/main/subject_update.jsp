@@ -14,9 +14,10 @@
                 <div class="mb-3 row">
                     <label for="subject-name" class="col-sm-2 col-form-label fw-bold">科目コード</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="subject-name" name="name" 
-                               value="${subject.name}" maxlength="30" required 
-                               placeholder="科目を入力してください">
+                 <input type="text"
+       name="subject-name"
+       value="${subject.subjectCode}"
+       disabled>
                         <%-- 科目未入力等のエラー表示 --%>
                         <c:if test="${not empty errors.get('name')}">
                             <div class="text-danger small mt-1">${errors.get("name")}</div>
@@ -28,10 +29,7 @@
                 <div class="mb-3 row">
                     <label for="subject-class" class="col-sm-2 col-form-label fw-bold">科目</label>
                     <div class="col-sm-4">
-                        <select class="form-select" id="subject-class" name="class_num">
-                            <c:forEach var="num" items="${subject_set}">
-                                <option value="${num}" <c:if test="${num == subject.classNum}">selected</c:if>>${num}</option>
-                            </c:forEach>
+                        <input type="text" id="subject-class" name="class_num">
                         </select>
                     </div>
                 </div>
@@ -44,7 +42,7 @@
 
             <%-- 戻るリンク --%>
             <div class="mx-4 mt-3">
-                <a href="subjectList.action">戻る</a>
+                <a href="SubjectList.action">戻る</a>
             </div>
         </section>
     </c:param>
