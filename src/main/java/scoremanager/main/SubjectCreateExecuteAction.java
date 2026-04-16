@@ -20,7 +20,7 @@ public class SubjectCreateExecuteAction extends Action {
 		Subject subject = new Subject();
 		School school = teacher.getSchool();
 		SubjectDao subDao = new SubjectDao();
-		if(cd.length() < 3 ) {
+		if(cd.length() > 3 ) {
 			req.setAttribute("lengherrortext", "科目コードは3文字で入力してください");
 			req.getRequestDispatcher("subject_create.jsp").forward(req, res);
 			return;
