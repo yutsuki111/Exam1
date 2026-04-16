@@ -8,29 +8,23 @@
         <section class="me-4">
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報変更</h2>
 
-            <form action="StudentUpdateExecute.action" method="post" class="mx-4">
+            <form action="SubjectUpdateExecute.action" method="post" class="mx-4">
 
                 <%-- 科目コード (必須入力・最大30文字) --%>
                 <div class="mb-3 row">
-                    <label for="subject-name" class="col-sm-2 col-form-label fw-bold">科目コード</label>
+                    <label for="cd" class="col-sm-2 col-form-label fw-bold">科目コード</label>
                     <div class="col-sm-6">
-                 <input type="text"
-       name="subject-name"
-       value="${subject.subjectCode}"
-       disabled>
-                        <%-- 科目未入力等のエラー表示 --%>
-                        <c:if test="${not empty errors.get('name')}">
-                            <div class="text-danger small mt-1">${errors.get("name")}</div>
-                        </c:if>
+                 		<input type="text" name="cd" value="${subject.cd}" disabled>
+                 		<input type="hidden" name="cd" value="${subject.cd}">
+                       <p>${errortext }</p>
                     </div>
                 </div>
 
                 <%--科目 --%>
                 <div class="mb-3 row">
-                    <label for="subject-class" class="col-sm-2 col-form-label fw-bold">科目</label>
+                    <label for="name" class="col-sm-2 col-form-label fw-bold">科目</label>
                     <div class="col-sm-4">
-                        <input type="text" id="subject-class" name="class_num">
-                        </select>
+                        <input type="text" id="name" name="name" value="${subject.name}">
                     </div>
                 </div>
 
