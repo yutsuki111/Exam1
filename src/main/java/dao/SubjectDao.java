@@ -119,6 +119,13 @@ public boolean save(Subject subject) throws Exception {
 				statement.setString(1, subject.getSchool().getCd());
 				statement.setString(2, subject.getCd());
 				statement.setString(3, subject.getName());
+			}else {
+				// プリペアードステートメントにSQL文をセット
+				statement = connection.prepareStatement("update subject set name = ? where school_cd = ? and cd = ?");
+				statement.setString(1, subject.getName());
+				statement.setString(2, subject.getSchool().getCd());
+				statement.setString(3, subject.getCd());
+				
 			}
 			int num = statement.executeUpdate();
 			if(num > 0) {
