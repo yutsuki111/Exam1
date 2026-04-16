@@ -18,7 +18,7 @@
                 登録が完了しました
             </div>
 
-            <p><a href="student_register.jsp">戻る</a></p>
+            <p><a href="menu.jsp">戻る</a></p>
 
             <p><a href="SubjectList.action">科目一覧</a></p>
 
