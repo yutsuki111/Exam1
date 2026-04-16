@@ -10,23 +10,23 @@
 
             <form action="StudentUpdateExecute.action" method="post" class="mx-4">
 
-                <%-- 氏名 (必須入力・最大30文字) --%>
+                <%-- 科目コード (必須入力・最大30文字) --%>
                 <div class="mb-3 row">
                     <label for="student-name" class="col-sm-2 col-form-label fw-bold">科目コード</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="student-name" name="name" 
                                value="${student.name}" maxlength="30" required 
                                placeholder="科目を入力してください">
-                        <%-- 氏名未入力等のエラー表示 --%>
+                        <%-- 科目未入力等のエラー表示 --%>
                         <c:if test="${not empty errors.get('name')}">
                             <div class="text-danger small mt-1">${errors.get("name")}</div>
                         </c:if>
                     </div>
                 </div>
 
-                <%-- クラス --%>
+                <%--科目 --%>
                 <div class="mb-3 row">
-                    <label for="student-class" class="col-sm-2 col-form-label fw-bold">クラス</label>
+                    <label for="student-class" class="col-sm-2 col-form-label fw-bold">科目</label>
                     <div class="col-sm-4">
                         <select class="form-select" id="student-class" name="class_num">
                             <c:forEach var="num" items="${class_num_set}">
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <%-- 変更ボタン --%>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary" name="login">変更</button>
