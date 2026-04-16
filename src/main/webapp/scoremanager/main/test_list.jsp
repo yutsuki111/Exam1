@@ -58,7 +58,6 @@
                             登録して終了
                         </button>
                     </div>
-
                 </form>
 
             </div>
