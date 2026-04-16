@@ -8,8 +8,15 @@
         <section class="me-4">
 
             <h2>学生情報登録</h2>
-
-            <p class="alert alert-success">登録が完了しました</p>
+            <div style="
+                background-color: #c8e6c9;
+                border: 1px solid #8bc34a;
+                padding: 10px 15px;
+                font-size: 1.2rem;
+                margin: 20px 0;
+            ">
+                登録が完了しました
+            </div>
 
             <p><a href="student_register.jsp">戻る</a></p>
 
