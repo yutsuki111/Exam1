@@ -26,7 +26,8 @@ public class SubjectDeleteAction extends Action {
 		
 
 		// 4. リクエストにデータをセット
-		req.setAttribute("subject", subject);
+		req.setAttribute("subject_cd", subject.getCd());
+		req.setAttribute("subject_name", subject.getName());
 
 		// 5. （JSP）へフォワード
 		req.getRequestDispatcher("subject_delete.jsp").forward(req, res);

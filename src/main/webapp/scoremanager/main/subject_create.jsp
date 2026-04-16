@@ -11,13 +11,13 @@
 	<h2 class="bg-dark bg-opacity-10">科目情報登録</h2>
 	<form action="SubjectCreateExecute.action" method="get">
 	<div class="mb-3">
-	科目コード
+	<label class="form-label">科目コード</label>
       <input type="text" name="cd" placeholder="科目コードを入力してください" 
              class="form-control" required>
     </div>
     <p>${ lengherrortext}</p>
     <div class="mb-3">
-	科目名
+	<label class="form-label">科目名</label>
       <input type="text" name="name" placeholder="科目名を入力してください" 
              class="form-control" required>
     </div>

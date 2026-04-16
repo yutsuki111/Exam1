@@ -40,7 +40,7 @@
 		<a href="SubjectUpdate.action?cd=${s.cd}">変更</a>
 		</td>
 		<td>
-		<a href="SubjectDelete.action">削除</a>
+		<a href="SubjectDelete.action?cd=${s.cd}">削除</a>
 		</td>
 		</tr>
 		</c:forEach>

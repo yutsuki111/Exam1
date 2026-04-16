@@ -164,9 +164,10 @@ public Subject get(String cd ,School school) throws Exception {
 		
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("delete from subject where school_cd = ? and cd=?");
+			statement = connection.prepareStatement("delete from subject where school_cd = ? and cd=? and name=?");
 			statement.setString(1, subject.getSchool().getCd());
-			statement.setString(2, subject.getCd());;
+			statement.setString(2, subject.getCd());
+			statement.setString(3, subject.getName());
 			int num = statement.executeUpdate();
 			if(num > 0) {
 				result = true;

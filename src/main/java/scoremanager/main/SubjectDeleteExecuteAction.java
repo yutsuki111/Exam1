@@ -15,8 +15,8 @@ public class SubjectDeleteExecuteAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// 1. リクエストパラメータの取得
-		String cd = req.getParameter("cd");
-
+		String cd = req.getParameter("subject_cd");
+		String name = req.getParameter("subject_name");
 		HttpSession session = req.getSession(); 
 		Teacher teacher = (Teacher)session.getAttribute("user"); 
 		School school = teacher.getSchool();
@@ -24,6 +24,7 @@ public class SubjectDeleteExecuteAction extends Action {
 		
 		// 3. 更新用データの作成
 		subject.setCd(cd);
+		subject.setName(name);
 		subject.setSchool(school);
 
 		// 4. DB更新実行
