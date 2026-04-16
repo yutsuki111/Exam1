@@ -9,17 +9,19 @@
 	
 	<c:param name="content">
 	<h2 class="bg-dark bg-opacity-10">科目情報登録</h2>
-	<form>
+	<form action="SubjectCreateExecute.action" method="get">
 	<div class="mb-3">
 	科目コード
       <input type="text" name="cd" placeholder="科目コードを入力してください" 
              class="form-control" required>
     </div>
+    <p>${ lengherrortext}</p>
     <div class="mb-3">
 	科目名
       <input type="text" name="name" placeholder="科目名を入力してください" 
              class="form-control" required>
     </div>
+    <p>${duperrortext }</p>
     <div class="mb-3">
     <input type="submit" value="登録" class="btn btn-primary">
     </div>
