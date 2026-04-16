@@ -103,7 +103,7 @@ public Subject get(String cd ,School school) throws Exception {
 		}
 		return list;
 	}
-public boolean save(Subject subject) throws Exception {
+	public boolean save(Subject subject) throws Exception {
 		
 		// データベースへのコネクションを確率
 		Connection connection = getConnection();
@@ -127,6 +127,46 @@ public boolean save(Subject subject) throws Exception {
 				statement.setString(3, subject.getCd());
 				
 			}
+			int num = statement.executeUpdate();
+			if(num > 0) {
+				result = true;
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		return result;
+	}
+	public boolean dalete(Subject subject) throws Exception {
+		
+		// データベースへのコネクションを確率
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		boolean result = false;
+		
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("delete from subject where school_cd = ? and cd=?");
+			statement.setString(1, subject.getSchool().getCd());
+			statement.setString(2, subject.getCd());;
 			int num = statement.executeUpdate();
 			if(num > 0) {
 				result = true;
