@@ -14,16 +14,23 @@
 
 	<%-- メインコンテンツ部分の定義 --%>
 	<c:param name="content">
+	
+		<style>
+        	table {border-collapse: collapse;}
+        	th, td {border-bottom: 1px solid #ccc;padding: 8px;}
+    	</style>
+	
 		<section class="me=4">
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
 		<div class="my-2 text-end px-4">
 				<a href="SubjectCreate.action">新規登録</a>
 			</div>
-		<table>
+		<table style="width:100%; table-layout: fixed;" >
 		<tr>
-		<th>科目コード</th>
-		<th>科目名</th>
-		
+		<th style="width: 22%;">科目コード</th>
+		<th style="width: 43%;">科目名</th>
+		<th style="width: 17%;"></th>
+		<th style="width: 13%;"></th>
 		</tr>
 		<c:forEach var="s" items="${subjects }">
 		<tr>
