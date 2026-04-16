@@ -12,7 +12,7 @@
 	<form>
 	<div class="mb-3">
 	科目コード
-      <input type="text" name="cd" placeholder="科目コードを入力して下さい" 
+      <input type="text" name="cd" placeholder="科目コードを入力してください" 
              class="form-control" required>
     </div>
     <div class="mb-3">
