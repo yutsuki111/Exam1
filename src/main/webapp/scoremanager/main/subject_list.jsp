@@ -37,7 +37,7 @@
 		<td>${s.cd}</td>
 		<td>${s.name }</td>
 		<td>
-		<a href="SubjectUpdate.action">変更</a>
+		<a href="subject_update.jsp">変更</a>
 		</td>
 		<td>
 		<a href="SubjectDelete.action">削除</a>

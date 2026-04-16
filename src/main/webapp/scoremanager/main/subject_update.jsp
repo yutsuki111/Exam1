@@ -12,10 +12,10 @@
 
                 <%-- 科目コード (必須入力・最大30文字) --%>
                 <div class="mb-3 row">
-                    <label for="student-name" class="col-sm-2 col-form-label fw-bold">科目コード</label>
+                    <label for="subject-name" class="col-sm-2 col-form-label fw-bold">科目コード</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="student-name" name="name" 
-                               value="${student.name}" maxlength="30" required 
+                        <input type="text" class="form-control" id="subject-name" name="name" 
+                               value="${subject.name}" maxlength="30" required 
                                placeholder="科目を入力してください">
                         <%-- 科目未入力等のエラー表示 --%>
                         <c:if test="${not empty errors.get('name')}">
@@ -26,11 +26,11 @@
 
                 <%--科目 --%>
                 <div class="mb-3 row">
-                    <label for="student-class" class="col-sm-2 col-form-label fw-bold">科目</label>
+                    <label for="subject-class" class="col-sm-2 col-form-label fw-bold">科目</label>
                     <div class="col-sm-4">
-                        <select class="form-select" id="student-class" name="class_num">
-                            <c:forEach var="num" items="${class_num_set}">
-                                <option value="${num}" <c:if test="${num == student.classNum}">selected</c:if>>${num}</option>
+                        <select class="form-select" id="subject-class" name="class_num">
+                            <c:forEach var="num" items="${subject_set}">
+                                <option value="${num}" <c:if test="${num == subject.classNum}">selected</c:if>>${num}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -44,7 +44,7 @@
 
             <%-- 戻るリンク --%>
             <div class="mx-4 mt-3">
-                <a href="StudentList.action">戻る</a>
+                <a href="SubjectList.action">戻る</a>
             </div>
         </section>
     </c:param>
