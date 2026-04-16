@@ -13,8 +13,7 @@
                 border: 1px solid #8bc34a;
                 padding: 10px 15px;
                 font-size: 1.2rem;
-                margin: 20px 0;
-            ">
+                margin: 20px 0;">
                 登録が完了しました
             </div>
 
