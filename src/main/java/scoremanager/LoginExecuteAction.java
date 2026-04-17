@@ -30,7 +30,7 @@ public class LoginExecuteAction extends Action {
 		}
 		
 		
-		req.getRequestDispatcher("main/Menu.action").forward(req, res);
+		res.sendRedirect("main/Menu.action");
 		
 	}
 }

@@ -14,7 +14,7 @@
 		<p>ログアウトしました。</p>
 		</div>
 	</div>
-	<a href="Login.action" class="text-center" style="margin-top: 20px;">ログイン</a>
+	<a href="../Login.action" class="text-center" style="margin-top: 20px;">ログイン</a>
 	
 	</c:param>
 
