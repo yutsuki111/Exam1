@@ -8,8 +8,9 @@
 
     <c:param name="title">
         得点管理システム
+        <!-- 画面タイトルを base.jsp に渡す -->
     </c:param>
-    <!-- 画面タイトルを base.jsp に渡す -->
+    
 
     <c:param name="scripts"></c:param>
 
