@@ -2,39 +2,11 @@
 
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
- 
 <c:import url="/common/base.jsp">
-    <c:param name="title">得点管理システム</c:param>
- 
-    <c:param name="content">
-        <section class="me-4">
- 
-            <h2>学生情報変更</h2>
- 
-           
-            <div style="
-                background-color: #c8e6c9;
-                border: 1px solid #8bc34a;
-                padding: 10px 15px;
-                font-size: 1.2rem;
-                margin: 20px 0;
-            ">
-                変更が完了しました
-            </div>
- 
-            <p><a href="StudentList.action">学生一覧</a></p>
- 
-        </section>
-    </c:param>
-</c:import>
- 
-
-
-<c:import url="/common/base.jsp">
-    <%-- 共通レイアウト base.jsp を読み込み --%>
+    <!-- 共通レイアウト base.jsp を読み込み -->
 
     <c:param name="title">得点管理システム</c:param>
-    <%-- 画面タイトルを base.jsp に渡す --%>
+    <!-- 画面タイトルを base.jsp に渡す -->
 
     <c:param name="content">
         <!-- base.jsp のメインコンテンツ領域に埋め込まれる -->
@@ -61,4 +33,3 @@
         </section>
     </c:param>
 </c:import>
-

@@ -13,7 +13,7 @@
 	<div class="mb-3">
 	<!-- 科目コード（3文字以下） -->
 	<label class="form-label">科目コード</label>
-      <input type="text" name="cd" placeholder="科目コードを入力してください"
+      <input type="text" name="cd" placeholder="科目コードを入力してください" 
              class="form-control" required>
     </div>
     <!-- エラー文（ないときは表示されない） -->
@@ -21,7 +21,7 @@
     <div class="mb-3">
     <!-- 科目名 -->
 	<label class="form-label">科目名</label>
-      <input type="text" name="name" placeholder="科目名を入力してください"
+      <input type="text" name="name" placeholder="科目名を入力してください" 
              class="form-control" required>
     </div>
     <!-- エラー文（ないときは表示されない） -->
@@ -35,7 +35,5 @@
 	<!-- 科目一覧に戻る -->
 	<a href="SubjectList.action">戻る</a>
 	</c:param>
- 
+
 </c:import>
- 
- 
