@@ -9,6 +9,8 @@ public class Test implements Serializable {
     private int no;            // 回数
     private int point;         // 点数
     private String classNum;   // クラス番号
+    
+    // 各ゲッター、セッター
 	public Student getStudent() {
 		return student;
 	}
