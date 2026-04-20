@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
  
-<%-- 共通テンプレート（base.jsp）を読み込み、ページ全体のレイアウトを適用 --%>
+<%-- 共通テンプレート（base.jsp）を読み込み --%>
 <c:import url="/common/base.jsp" >
 	<%-- ページのタイトルをパラメータとして渡す --%>
 	<c:param name="title">得点管理システム</c:param>
@@ -37,9 +37,9 @@
 						<label class="form-label" for="student-f2-select">クラス</label>
 						<select class="form-select" id="student-f2-select" name="f2">
 							<option value="0">--------</option>
-							<%-- Actionから渡された class_num_set（クラス一覧）をループで回す --%>
+							<%-- Actionから渡された class_num_setをループ --%>
 							<c:forEach var="num" items="${class_num_set }">
-								<%-- 検索後の再表示時、選択していたクラスを保持（selected）する --%>
+								<%-- 検索後の再表示時、選択していたクラスを保持 --%>
 								<option value="${num }" <c:if test="${num == f2 }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
@@ -48,7 +48,7 @@
 					<%-- 在学中チェックボックス --%>
 					<div class="col-2 form-check text-center">
 						<label class="form-check-label" for="student-f3-check">在学中
-							<%-- パラメーターf3（チェック状態）が存在する場合、チェックを入れたまま（checked）にする --%>
+							<%-- パラメーターf3（チェック状態）がある場合、チェックを入れたまま（checked）にする --%>
 							<input class="form-check-input" type="checkbox"
 							id="student-f3-check" name="f3" value="t"
 							<c:if test="${!empty f3 }">checked</c:if> />
@@ -60,7 +60,7 @@
 						<button class="btn btn-secondary" id="filter-button">絞込み</button>
 					</div>
  
-					<%-- 入力エラー（例：クラスのみ選択して年度が未選択の場合など）を表示 --%>
+					<%-- 入力エラーを表示 --%>
 					<div class="mt-2 text-warning">${errors.get("f1") }</div>
 				</div>
 			</form>

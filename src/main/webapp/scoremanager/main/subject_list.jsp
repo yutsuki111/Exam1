@@ -1,11 +1,8 @@
-<%-- 
-    a学生一覧表示画面
-    機能：入学年度、クラス、在学状況での絞り込みと、該当する学生の一覧表示
---%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
-<%-- 共通テンプレート（base.jsp）を読み込み、ページ全体のレイアウトを適用 --%>
+<%-- 共通テンプレート（base.jsp）を読み込み --%>
 <c:import url="/common/base.jsp" >
 	<%-- ページのタイトルをパラメータとして渡す --%>
 	<c:param name="title">得点管理システム</c:param>
