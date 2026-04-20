@@ -1,10 +1,11 @@
 package bean;
 
 public class Subject {
-	private String cd;
-	private String name;
-	private School school;
+	private String cd;		// 科目コード
+	private String name;	// 科目名
+	private School school;	// 学校
 	
+	// 各ゲッター、セッター
 	public String getCd() {
         return cd;
     }

@@ -13,22 +13,28 @@ public class SubjectUpdateAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
+		// パラメータ取得
 		String cd = req.getParameter("cd");
 
+		// セッションを取得
 		HttpSession session = req.getSession(); 
+		// ログイン中のTeacher情報を取得
 		Teacher teacher = (Teacher)session.getAttribute("user"); 
+		// ログイン中のteacherが所属しているSchoolを取り出す
 		School school = teacher.getSchool();
-
+		
+		// インスタンス化
 		SubjectDao subDao = new SubjectDao();
+		
+		// getメソッドを呼び出し
 		Subject subject = subDao.get(cd, school);
 
 		
 
-		// 4. リクエストにデータをセット
+		// リクエストにデータをセット
 		req.setAttribute("subject", subject);
 
-		// 5. （JSP）へフォワード
+		// subject_update.jspへフォワード
 		req.getRequestDispatcher("subject_update.jsp").forward(req, res);
 	}
 }

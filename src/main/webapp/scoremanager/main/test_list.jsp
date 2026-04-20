@@ -54,6 +54,7 @@
                     <input type="hidden" name="classNo" value="${classNo}">
 
                     <div class="mt-3">
+                    	<!-- 登録ボタン -->
                         <button type="submit" name="regist" class="btn btn-success">
                             登録して終了
                         </button>

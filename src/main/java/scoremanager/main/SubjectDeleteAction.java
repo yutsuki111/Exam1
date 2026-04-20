@@ -13,23 +13,25 @@ public class SubjectDeleteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
+		// パラメータ取得
 		String cd = req.getParameter("cd");
-
+		// セッションを取得
 		HttpSession session = req.getSession(); 
+		// ログイン中のTeacher情報を取得
 		Teacher teacher = (Teacher)session.getAttribute("user"); 
+		// インスタンス化
 		School school = teacher.getSchool();
-
 		SubjectDao subDao = new SubjectDao();
+		
+		// getメソッドを呼び出し
 		Subject subject = subDao.get(cd, school);
 
-		
 
-		// 4. リクエストにデータをセット
+		// リクエストにデータをセット
 		req.setAttribute("subject_cd", subject.getCd());
 		req.setAttribute("subject_name", subject.getName());
 
-		// 5. （JSP）へフォワード
+		// subject_delete.jspへフォワード
 		req.getRequestDispatcher("subject_delete.jsp").forward(req, res);
 	}
 }

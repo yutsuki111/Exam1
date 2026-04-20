@@ -6,6 +6,7 @@
 
 <!-- base.jspを読み込む -->
 <c:import url="/common/base.jsp">
+<<<<<<< HEAD
 
     <!-- ページタイトル -->
     <c:param name="title">
@@ -24,3 +25,19 @@
     </c:param>
 
 </c:import>
+=======
+	<c:param name="title">
+	    得点管理システム
+	</c:param>
+	<c:param name="scripts"></c:param>
+	
+	<c:param name="content">
+	<!-- ログインリンク -->
+	<a href="Login.action" class="text-center">ログイン</a>
+	
+	</c:param>
+ 
+</c:import>
+ 
+ 
+>>>>>>> branch 'master' of https://github.com/yutsuki111/Exam1.git
