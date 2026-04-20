@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <c:import url="/common/base.jsp">
+<%-- 共通レイアウト base.jsp を読み込み --%>
     <c:param name="title">得点管理システム</c:param>
+    <!-- 画面タイトルを base.jsp に渡す -->
 
     <c:param name="content">
         <section class="me-4">
