@@ -22,9 +22,11 @@
 	
 		<section class="me=4">
 		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
+		<!-- 新規登録リンク -->
 		<div class="my-2 text-end px-4">
 				<a href="SubjectCreate.action">新規登録</a>
-			</div>
+		</div>
+		<!-- 科目テーブル -->
 		<table style="width:100%; table-layout: fixed;" >
 		<tr>
 		<th style="width: 22%;">科目コード</th>
@@ -37,9 +39,11 @@
 		<td>${s.cd}</td>
 		<td>${s.name }</td>
 		<td>
+		<!-- 変更リンク -->
 		<a href="SubjectUpdate.action?cd=${s.cd}">変更</a>
 		</td>
 		<td>
+		<!-- 削除リンク -->
 		<a href="SubjectDelete.action?cd=${s.cd}">削除</a>
 		</td>
 		</tr>
