@@ -65,7 +65,7 @@
 
         </section>
         <section class="me-4">
-
+		<c:if scoreList="${not empty scoreList}">
             <div class="container">
                 <!-- 登録処理を行うサーブレットにPOST送信 -->
                 <form action="RegisterServlet" method="post">
