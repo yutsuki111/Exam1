@@ -41,6 +41,6 @@ public class TestListStudentExecuteAction extends Action {
 		req.setAttribute("f4", no);
 		req.setAttribute("test_list", testList);
 		// 完了画面へフォワード
-		req.getRequestDispatcher("test_list.jsp").forward(req, res);
+		req.getRequestDispatcher("test_list_student.jsp").forward(req, res);
 	}
 }
