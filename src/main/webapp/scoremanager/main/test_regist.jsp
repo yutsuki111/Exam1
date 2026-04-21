@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <c:import url="/common/base.jsp">
-	<!-- ページタイトル -->
+	<%-- ページタイトル --%>
     <c:param name="title">得点管理システム</c:param>
 
     <c:param name="content">

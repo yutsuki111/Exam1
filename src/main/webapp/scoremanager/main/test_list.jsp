@@ -5,10 +5,10 @@
 <!-- 共通レイアウト(base.jsp)を読み込む -->
 <c:import url="/common/base.jsp">
     
-    <!-- 画面タイトルをbase.jspに渡す -->
+    <%-- 画面タイトルをbase.jspに渡す --%>
     <c:param name="title">得点管理システム</c:param>
 
-    <!-- メインコンテンツ部分 -->
+    <%-- メインコンテンツ部分 --%>
     <c:param name="content">
         <section class="me-4">
 

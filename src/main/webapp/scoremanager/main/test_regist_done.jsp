@@ -6,10 +6,10 @@
 <!-- 共通レイアウト(base.jsp)の読み込み -->
 <c:import url="/common/base.jsp" >
 
-	<!-- 画面タイトルをbase.jspに渡す -->
+	<%-- 画面タイトルをbase.jspに渡す --%>
 	<c:param name="title">得点管理システム</c:param>
 
-	<!-- JavaScript用の領域（今回は未使用） -->
+	<%-- JavaScript用の領域（今回は未使用） --%>
 	<c:param name="scripts"></c:param>
 
 	<%-- メインコンテンツ部分の定義 --%>
