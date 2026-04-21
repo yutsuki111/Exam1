@@ -63,8 +63,10 @@
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
-<form action = "TestListSubject.action"method="get">
-				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+				
+				
+			<form action = "TestListStudent.action"method="get">
+				<div class="row  align-items-center" id="filter">
 					<div class="col-2">
 					学生情報
 					</div>
