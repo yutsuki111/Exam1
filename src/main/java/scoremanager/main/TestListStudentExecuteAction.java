@@ -1,42 +1,46 @@
 package scoremanager.main;
 
+import java.util.List;
+
 import bean.School;
-import bean.Subject;
+import bean.Student;
 import bean.Teacher;
-import dao.SubjectDao;
+import bean.TestListStudent;
+import dao.TestListStudentDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class SubjectDeleteExecuteAction extends Action {
+public class TestListStudentExecuteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// リクエストパラメータの取得
-		String cd = req.getParameter("subject_cd");
-		String name = req.getParameter("subject_name");
+		String no = req.getParameter("no");
+		
+
 		// セッションを取得
 		HttpSession session = req.getSession(); 
 		// ログイン中のTeacher情報を取得
 		Teacher teacher = (Teacher)session.getAttribute("user"); 
 		// ログイン中のteacherが所属しているSchoolを取り出す
 		School school = teacher.getSchool();
-		// インスタンス化
-		Subject subject = new Subject();
+		Student student = new Student();
+
 		
 		// 更新用データの作成
-		subject.setCd(cd);
-		subject.setName(name);
-		subject.setSchool(school);
+		student.setNo(no);
+		student.setSchool(school);
 
 		// DB更新実行
-		SubjectDao subDao = new SubjectDao();
-		// メソッドは、内部でgetして存在すればUPDATEを実行する仕様なのでこれだけでOK
-		subDao.delete(subject);
+		TestListStudentDao tlsDao = new TestListStudentDao();
+		List<TestListStudent> testList = tlsDao.filter(student);
 
-		// subject_delete_done.jspへフォワード
-		req.getRequestDispatcher("subject_delete_done.jsp").forward(req, res);
+		req.setAttribute("f4", no);
+		req.setAttribute("test_list", testList);
+		// 完了画面へフォワード
+		req.getRequestDispatcher("test_list_student.jsp").forward(req, res);
 	}
 }

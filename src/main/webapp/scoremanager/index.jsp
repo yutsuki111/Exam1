@@ -8,6 +8,7 @@
 	<c:param name="scripts"></c:param>
 	
 	<c:param name="content">
+	<!-- ログインリンク -->
 	<a href="Login.action" class="text-center">ログイン</a>
 	
 	</c:param>

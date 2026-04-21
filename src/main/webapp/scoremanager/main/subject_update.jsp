@@ -10,7 +10,7 @@
 
             <form action="SubjectUpdateExecute.action" method="post" class="mx-4">
 
-                <%-- 科目コード (必須入力・最大30文字) --%>
+                <%-- 科目コード  --%>
                 <div class="mb-3 row">
                     <label for="cd" class="col-sm-2 col-form-label fw-bold">科目コード</label>
                     <div class="col-sm-6">

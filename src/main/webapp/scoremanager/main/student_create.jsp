@@ -19,7 +19,7 @@
                             <option value="${year}" <c:if test="${year == ent_year}">selected</c:if>>${year}</option>
                         </c:forEach>
                     </select>
-                    <%-- ① 入学年度未選択エラー表示 --%>
+                    <%-- 入学年度未選択エラー --%>
                     <c:if test="${not empty errors.get('f1')}">
                         <div class="text-danger small mt-1">${errors.get("f1")}</div>
                     </c:if>
@@ -31,7 +31,7 @@
                     <input type="text" class="form-control" id="student-no" name="no" 
                            value="${no}" maxlength="10" required 
                            placeholder="学生番号を入力してください">
-                    <%-- ② 学生番号重複エラー または 未入力エラー --%>
+                    <%-- 学生番号重複エラー,未入力エラー --%>
                     <c:if test="${not empty errors.get('no')}">
                         <div class="text-danger small mt-1">${errors.get("no")}</div>
                     </c:if>
@@ -43,7 +43,7 @@
                     <input type="text" class="form-control" id="student-name" name="name" 
                            value="${name}" maxlength="30" required 
                            placeholder="氏名を入力してください">
-                    <%-- 氏名未入力エラー表示 --%>
+                    <%-- 氏名未入力エラー --%>
                     <c:if test="${not empty errors.get('name')}">
                         <div class="text-danger small mt-1">${errors.get("name")}</div>
                     </c:if>
@@ -59,7 +59,7 @@
                     </select>
                 </div>
 
-                <%-- 登録して終了ボタン --%>
+                <%-- 登録して終了 --%>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-secondary" name="end" value="15">登録して終了</button>
                 </div>
