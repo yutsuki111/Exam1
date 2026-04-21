@@ -28,7 +28,7 @@ public class TestListStudentExecuteAction extends Action {
 		// ログイン中のteacherが所属しているSchoolを取り出す
 		School school = teacher.getSchool();
 		Student student = new Student();
-		
+
 		
 		// 更新用データの作成
 		student.setNo(no);
@@ -37,7 +37,7 @@ public class TestListStudentExecuteAction extends Action {
 		// DB更新実行
 		TestListStudentDao tlsDao = new TestListStudentDao();
 		List<TestListStudent> testList = tlsDao.filter(student);
-		
+
 		req.setAttribute("f4", no);
 		req.setAttribute("test_list", testList);
 		// 完了画面へフォワード
