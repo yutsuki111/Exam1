@@ -12,7 +12,7 @@
 				<!-- 見出し -->
                 <h2>成績管理</h2>
 				<!-- 検索フォーム -->
-                <form action="SearchServlet" method="post">
+                <form action="TestRegist.action" method="post">
                 	<!-- 全項目を横並びにする flex コンテナ -->
                 	<div class="d-flex align-items-center flex-wrap gap-4">
                 	
@@ -20,7 +20,10 @@
 	                    <div class="d-flex align-items-center">
 	                        <label class="me-2">入学年度</label>
 	                        <select name="f1" class="form-select w-auto">
-	                            <option value="0">------</option>
+	                        	<option value="0">------</option>
+	                        	<c:forEach var="year" items="${ent_year_set }">
+	                            	<option value="${year }">${year }</option>
+	                            </c:forEach>
 	                        </select>
 	                    </div>
 	                    <!-- クラス -->
@@ -28,6 +31,9 @@
 	                        <label class="me-2">クラス</label>
 	                        <select name="f2" class="form-select w-auto">
 	                            <option value="0">------</option>
+	                            <c:forEach var="classNum" items="${class_num_set }">
+	                            	<option value="${classNum }">${classNum }</option>
+	                            </c:forEach>
 	                        </select>
 	                    </div>
 						<!-- 科目 -->
@@ -35,6 +41,9 @@
 	                        <label class="me-2">科目</label>
 	                        <select name="f3" class="form-select w-auto">
 	                            <option value="0">------</option>
+	                            <c:forEach var="subject" items="${subject_set }">
+	                            	<option value="${subject.cd }">${subject.name }</option>
+	                            </c:forEach>
 	                        </select>
 	                    </div>
 						<!-- 回数 -->
@@ -42,6 +51,9 @@
 	                        <label class="me-2">回数</label>
 	                        <select name="f4" class="form-select w-auto">
 	                            <option value="0">------</option>
+	                            <c:forEach var="testNo" items="${test_no_set }">
+	                            	<option value="${testNo }">${testNo }</option>
+	                            </c:forEach>
 	                        </select>
 	                    </div>
 	                    <!-- 検索ボタン -->
