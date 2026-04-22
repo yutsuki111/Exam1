@@ -23,9 +23,10 @@ public class TestListSubjectDao extends Dao {
 		PreparedStatement statement = null;
 		
 		try {
+			
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(
-				    "select t.*, s.name as student_name " +
+				    "select *" +
 				    "from test t " +
 				    "left join student s on s.no = t.student_no " +
 				    "where s.ent_year = ? " +
