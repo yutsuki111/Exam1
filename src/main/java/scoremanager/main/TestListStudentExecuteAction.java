@@ -24,6 +24,11 @@ public class TestListStudentExecuteAction extends Action {
 		HttpSession session = req.getSession(); 
 		// ログイン中のTeacher情報を取得
 		Teacher teacher = (Teacher)session.getAttribute("user"); 
+		if (teacher == null) {
+		    // ログインしていない
+		    req.getRequestDispatcher("login.jsp").forward(req, res);
+		    return;
+		}
 		// ログイン中のteacherが所属しているSchoolを取り出す
 		School school = teacher.getSchool();
 		Student student = new Student();

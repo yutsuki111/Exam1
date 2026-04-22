@@ -16,8 +16,8 @@
 			
  
 			<%-- 検索・絞り込みフォーム --%>
-			<form action = "TestListSubjectExecute.action"method="get">
-				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+			<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+				<form action = "TestListSubjectExecute.action"method="get" class="row align-items-center py-3">
 					<div class="col-2">
 					科目情報
 					</div>
@@ -63,27 +63,27 @@
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
+				</form>
 				
-				
-			<form action = "TestListStudentExecute.action"method="get">
-				<div class="row  align-items-center py-3" id="filter">
-					<div class="col-2">
-					学生情報
+				<form action = "TestListStudentExecute.action"method="get" class="row align-items-center py-3">
+						<div class="col-2">
+						学生情報
+						</div>
+						<%-- 入学年度の選択プルダウン --%>
+						<div class="col-2">
+							<label class="form-label" for="student-f4-select">学生番号</label>
+							<input type="text" class="" id="student-f4-select" name="f4">
+						</div>
+						
+						<%-- 絞込み実行ボタン --%>
+						<div class="col-2 text-center">
+							<button class="btn btn-secondary" id="filter-button">検索</button>
+						</div>
+						<%-- 入力エラーを表示 --%>
+						<div class="mt-2 text-warning">${errors.get("f1") }</div>
 					</div>
-					<%-- 入学年度の選択プルダウン --%>
-					<div class="col-2">
-						<label class="form-label" for="student-f4-select">学生番号</label>
-						<input type="text" class="" id="student-f4-select" name="f4">
-					</div>
-					
-					<%-- 絞込み実行ボタン --%>
-					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="filter-button">検索</button>
-					</div>
-					<%-- 入力エラーを表示 --%>
-					<div class="mt-2 text-warning">${errors.get("f1") }</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</section>
 	</c:param>
 </c:import>
