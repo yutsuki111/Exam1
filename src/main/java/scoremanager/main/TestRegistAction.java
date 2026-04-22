@@ -29,6 +29,9 @@ public class TestRegistAction extends Action {
         String subjectCd = req.getParameter("f3");
         String numStr = req.getParameter("f4");
 
+        // TestRegistExecuteActionから戻ってきた際のエラーメッセージを取得
+        List<String> errors = (List<String>) req.getAttribute("errors");
+
         int entYear = 0;
         int num = 0;
 
@@ -76,6 +79,11 @@ public class TestRegistAction extends Action {
         req.setAttribute("f2", classNum);
         req.setAttribute("f3", subjectCd);
         req.setAttribute("f4", num);
+        
+       
+        if (errors != null && !errors.isEmpty()) {
+            req.setAttribute("errors", errors);
+        }
         
         req.setAttribute("ent_year_set", entYearSet);
         req.setAttribute("class_num_set", classNumSet);

@@ -5,9 +5,11 @@ import java.util.Map;
 
 import bean.School;
 import bean.Student;
+import bean.Teacher;
 import dao.StudentDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class StudentCreateExecuteAction extends Action {
@@ -27,9 +29,9 @@ public class StudentCreateExecuteAction extends Action {
 			entYear = Integer.parseInt(entYearStr);
 		}
 
-		// 【テスト用】学校情報の固定
-		School school = new School();
-		school.setCd("oom");
+		HttpSession session = req.getSession();
+		Teacher teacher = (Teacher) session.getAttribute("user");
+		School school = teacher.getSchool();
 
 		// 2. 準備
 		StudentDao sDao = new StudentDao();

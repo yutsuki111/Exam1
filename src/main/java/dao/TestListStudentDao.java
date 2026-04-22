@@ -3,80 +3,52 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.School;
 import bean.Student;
-import bean.Subject;
 import bean.TestListStudent;
-
 
 public class TestListStudentDao extends Dao {
 
-	public List<TestListStudent> filter(Student student) throws Exception {
-		// リストを初期化
-		List<TestListStudent> list = new ArrayList<>();
-		// データベースへのコネクションを確立
-		Connection connection = getConnection();
-		// プリペアードステートメント
-		PreparedStatement statement = null;
-		
-		try {
-			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from test where student_no = ?");
-			// プリペアードステートメントに学校コードをバインド
-			statement.setString(1, student.getNo());
-			// プリペアードステートメントを実行
-			ResultSet rSet = statement.executeQuery();
-			
-			list = postFilter(rSet);
-		}catch (Exception e) {
-			throw e;
-		} finally {
-			// プリペアードステートメントを閉じる
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-			// コネクションを閉じる
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-		}
-		return list;
-	}
+    /**
+     * 特定の学生の全成績を検索する
+     */
+    public List<TestListStudent> filter(Student student) throws Exception {
+        List<TestListStudent> list = new ArrayList<>();
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
 
-	public List<TestListStudent> postFilter(ResultSet rSet) throws Exception {
-		// リストを初期化
-		List<TestListStudent> list = new ArrayList<>();
-		SubjectDao subDao = new SubjectDao();
-		// リザルトセットを全件走査
-		while (rSet.next()) {
-			TestListStudent test= new TestListStudent();
-			School school = new School();
-			school.setCd(rSet.getString("school_cd"));
-			String cd = rSet.getString("subject_cd");
-			Subject subject = subDao.get(cd,school);
-			
-			
-			test.setSubjectName(subject.getName());
-			test.setSubjectCd(rSet.getString("subject_cd"));
-			test.setNum(rSet.getInt("no"));
-			test.setPoint(rSet.getInt("point"));
-			list.add(test);
-		}
-		return list;
-		
-		
-	}
+        // 試験結果と科目名を結合して取得
+        String sql = "SELECT sub.NAME AS SUBJECT_NAME, t.SUBJECT_CD, t.NO, t.POINT " +
+                     "FROM TEST t " +
+                     "JOIN SUBJECT sub ON t.SUBJECT_CD = sub.CD AND t.SCHOOL_CD = sub.SCHOOL_CD " +
+                     "WHERE t.STUDENT_NO = ? " +
+                     "ORDER BY t.SUBJECT_CD ASC, t.NO ASC";
 
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, student.getNo());
+            ResultSet rSet = statement.executeQuery();
+
+            while (rSet.next()) {
+                TestListStudent tls = new TestListStudent();
+                tls.setSubjectName(rSet.getString("subject_name"));
+                tls.setSubjectCd(rSet.getString("subject_cd"));
+                tls.setNum(rSet.getInt("no"));
+                tls.setPoint(rSet.getInt("point"));
+                list.add(tls);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+    }
 }

@@ -3,91 +3,72 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bean.School;
 import bean.Subject;
 import bean.TestListSubject;
 
-
 public class TestListSubjectDao extends Dao {
 
-	public List<TestListSubject> filter(int entYear, String classNum, Subject subject, School school) throws Exception {
-		// リストを初期化
-		List<TestListSubject> list = new ArrayList<>();
-		// データベースへのコネクションを確立
-		Connection connection = getConnection();
-		// プリペアードステートメント
-		PreparedStatement statement = null;
-		
-		try {
-			
-			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement(
-				    "select *" +
-				    "from test t " +
-				    "left join student s on s.no = t.student_no " +
-				    "where s.ent_year = ? " +
-				    "and s.class_num = ? " +
-				    "and t.subject_cd = ? " +
-				    "and t.school_cd = ?"
-				);
-
-			// プリペアードステートメントにバインド
-			statement.setInt(1, entYear);
-			statement.setString(2, classNum);
-			statement.setString(3, subject.getCd());
-			statement.setString(4, school.getCd());
-			// プリペアードステートメントを実行
-			ResultSet rSet = statement.executeQuery();
-			
-			list = postFilter(rSet);
-		}catch (Exception e) {
-			throw e;
-		} finally {
-			// プリペアードステートメントを閉じる
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-			// コネクションを閉じる
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-		}
-		return list;
-	}
-
-	public List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
-
+    /**
+     * 指定された条件で学生と成績を検索する
+     */
+    public List<TestListSubject> filter(int entYear, String classNum, Subject subject, School school) throws Exception {
         List<TestListSubject> list = new ArrayList<>();
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
 
-        while (rSet.next()) {
-            TestListSubject test = new TestListSubject();
+        String sql = "SELECT s.NO, s.NAME, s.ENT_YEAR, s.CLASS_NUM, t.NO AS TEST_NO, t.POINT " +
+                     "FROM STUDENT s " +
+                     "LEFT JOIN TEST t ON s.NO = t.STUDENT_NO AND t.SUBJECT_CD = ? " +
+                     "WHERE s.ENT_YEAR = ? AND s.CLASS_NUM = ? AND s.SCHOOL_CD = ? " +
+                     "ORDER BY s.NO ASC, t.NO ASC";
 
-            School school = new School();
-            school.setCd(rSet.getString("school_cd"));
-            
-            test.setClassNum(rSet.getString("class_num"));
-            test.setEntYear(rSet.getInt("ent_year"));
-            test.putPoint(rSet.getInt("no"), rSet.getInt("point"));
-            test.setStudentName(rSet.getString("name"));
-            test.setStudentNo(rSet.getString("student_no"));
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, subject.getCd());
+            statement.setInt(2, entYear);
+            statement.setString(3, classNum);
+            statement.setString(4, school.getCd());
+            ResultSet rSet = statement.executeQuery();
 
-            list.add(test);
+            Map<String, TestListSubject> map = new HashMap<>();
+
+            while (rSet.next()) {
+                String no = rSet.getString("no");
+                TestListSubject tls = map.get(no);
+
+                if (tls == null) {
+                    tls = new TestListSubject();
+                    tls.setNo(no);
+                    tls.setName(rSet.getString("name"));
+                    tls.setEntYear(rSet.getInt("ent_year"));
+                    tls.setClassNum(rSet.getString("class_num"));
+                    map.put(no, tls);
+                    list.add(tls);
+                }
+
+               
+                int testNo = rSet.getInt("test_no");
+                int point = rSet.getInt("point");
+                if (testNo > 0) {
+                    tls.putPoint(testNo, point);
+                }
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         }
-
         return list;
-		
-	}
-
+    }
 }

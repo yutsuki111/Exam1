@@ -62,6 +62,14 @@
                 <c:when test="${not empty tests}">
                     <div class="mx-3 mt-4">
                         <p>科目：${tests[0].subject.name} （第${f4}回）</p>
+
+                        <c:if test="${not empty errors}">
+                            <div class="mb-3">
+                                <c:forEach var="error" items="${errors}">
+                                    <p class="text-danger small mb-0">${error}</p>
+                                </c:forEach>
+                            </div>
+                        </c:if>
                         
                         <form action="TestRegistExecute.action" method="post">
                             <input type="hidden" name="subject_cd" value="${f3}">
@@ -71,9 +79,9 @@
                                 <thead>
                                     <tr>
                                         <th>入学年度</th>
+                                        <th>クラス</th>
                                         <th>学生番号</th>
                                         <th>氏名</th>
-                                        <th>クラス</th>
                                         <th style="width: 150px;">点数</th>
                                     </tr>
                                 </thead>
@@ -81,16 +89,15 @@
                                     <c:forEach var="test" items="${tests}" varStatus="status">
                                         <tr>
                                             <td>${test.student.entYear}</td>
+                                            <td>${test.student.classNum}</td>
                                             <td>${test.student.no}</td>
                                             <td>${test.student.name}</td>
-                                            <td>${test.student.classNum}</td>
                                             <td>
                                                 <%-- 学生番号を配列として送る --%>
                                                 <input type="hidden" name="student_no" value="${test.student.no}">
                                                 
                                                 <%-- 点数の入力欄。-1の場合は空文字にする --%>
                                                 <input type="number" name="point" class="form-control" 
-                                                       min="0" max="100"
                                                        value="<c:if test="${test.point != -1}">${test.point}</c:if>">
                                             </td>
                                         </tr>
@@ -99,7 +106,6 @@
                             </table>
                             
                             <div class="mt-4">
-                                <%-- ボタンの色をグレーに、文言を「登録して終了」に変更 --%>
                                 <button type="submit" class="btn btn-secondary px-4">登録して終了</button>
                             </div>
                         </form>

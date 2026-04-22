@@ -2,9 +2,11 @@ package scoremanager.main;
 
 import bean.School;
 import bean.Student;
+import bean.Teacher;
 import dao.StudentDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class StudentUpdateExecuteAction extends Action {
@@ -19,10 +21,9 @@ public class StudentUpdateExecuteAction extends Action {
 		String classNum = req.getParameter("class_num");
 		// チェックボックス（is_attend）は、チェックがないとnullで送られてくる
 		String isAttendStr = req.getParameter("is_attend");
-
-		// 【テスト用】学校情報の固定
-		School school = new School();
-		school.setCd("oom");
+		HttpSession session = req.getSession();
+		Teacher teacher = (Teacher) session.getAttribute("user");
+		School school = teacher.getSchool();
 
 		// 2. 在学フラグの判定
 		// チェックボックスがON（"true"などの値がある）ならtrue、それ以外はfalse

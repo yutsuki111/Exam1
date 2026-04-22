@@ -40,14 +40,11 @@ public class FrontController extends HttpServlet {
 
             // Actionクラスの処理を実行
             action.execute(req, res);
-
         } catch (Exception e) {
-            // エラー内容をコンソールに出力
             e.printStackTrace();
-
-            // エラーページへ画面遷移
-            req.getRequestDispatcher("/error.jsp")
-               .forward(req, res);
+            // エラーメッセージをリクエストにセットしてからフォワードする
+            req.setAttribute("errortext", e.getMessage()); 
+            req.getRequestDispatcher("/error.jsp").forward(req, res);
         }
     }
 
