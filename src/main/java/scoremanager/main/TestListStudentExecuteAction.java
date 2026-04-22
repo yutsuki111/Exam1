@@ -18,8 +18,7 @@ public class TestListStudentExecuteAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// リクエストパラメータの取得
-		String no = req.getParameter("no");
-		
+		String no = req.getParameter("f4");
 
 		// セッションを取得
 		HttpSession session = req.getSession(); 
