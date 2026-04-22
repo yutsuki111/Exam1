@@ -55,7 +55,7 @@
 							<%-- Actionから渡された class_num_setをループ --%>
 							<c:forEach var="s" items="${subjects }">
 								<%-- 検索後の再表示時、選択していたクラスを保持 --%>
-								<option value="${s.cd }" <c:if test="${s.cd == f3 }">selected</c:if>>${s.name }</option>
+								<option value="${s.cd }" <c:if test="${s.name == f3 }">selected</c:if>>${s.name }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -85,20 +85,16 @@
 				</form>
 				<table style="width:100%; table-layout: fixed;" >
 					<tr>
-					<th style="width: 22%;">入学年度</th>
-					<th style="width: 23%;">クラス</th>
-					<th style="width: 17%;">学生番号</th>
-					<th style="width: 13%;">氏名</th>
-					<th style="width: 10%;">1回</th>
-					<th style="width: 10%;">2回</th>
+					<th style="width: 22%;">科目名</th>
+					<th style="width: 23%;">科目コード</th>
+					<th style="width: 17%;">回数</th>
+					<th style="width: 13%;">得点</th>
 					</tr>
 					<c:forEach var="t" items="${test_list }">
 						<tr>
-						<td>${t.entYear}</td>
-						<td>${t.classNum }</td>
-						<td>${t.studentNo}</td>
-						<td>${t.studentName}</td>
-						<td>${t.point}</td>
+						<td>${t.kamoku}</td>
+						<td>${t.kamokuko-do }</td>
+						<td>${t.kaisuu}</td>
 						<td>${t.point}</td>
 						</tr>
 					</c:forEach>
@@ -111,5 +107,9 @@
         	th, td {border-bottom: 1px solid #ccc;padding: 8px;}
     	</style>
 	
+		<section class="me=4">
+		<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績一覧（科目）</h2>
+		
+
 	</c:param>
 </c:import>

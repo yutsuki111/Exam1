@@ -14,7 +14,6 @@
 		<section class="me=4">
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績一覧（科目）</h2>
 			
- 
 			<%-- 検索・絞り込みフォーム --%>
 			<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
 				<form action = "TestListSubjectExecute.action"method="get" class="row align-items-center py-3">
@@ -61,10 +60,10 @@
 					</div>
 					<%-- 絞込み実行ボタン --%>
 					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="filter-button">検索</button>
+						<button class="btn btn-secondary" id="subject_filter-button">検索</button>
 					</div>
 				</form>
-				
+				<div class="w-100"></div>
 				<form action = "TestListStudentExecute.action"method="get" class="row align-items-center py-3">
 						<div class="col-2">
 						学生情報
@@ -77,11 +76,10 @@
 						
 						<%-- 絞込み実行ボタン --%>
 						<div class="col-2 text-center">
-							<button class="btn btn-secondary" id="filter-button">検索</button>
+							<button class="btn btn-secondary" id="student_filter-button">検索</button>
 						</div>
 						<%-- 入力エラーを表示 --%>
 						<div class="mt-2 text-warning">${errors.get("f1") }</div>
-					</div>
 				</form>
 			</div>
 		</section>
