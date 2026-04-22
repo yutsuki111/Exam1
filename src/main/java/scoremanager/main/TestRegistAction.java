@@ -20,13 +20,29 @@ public class TestRegistAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        // セッションからユーザー（先生）情報を取得
         HttpSession session = req.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
         School school = teacher.getSchool();
 
-        // 1. 検索フォームのプルダウン用データを準備
-        // 入学年度（今年から10年前まで）
+        String entYearStr = req.getParameter("f1");
+        String classNum = req.getParameter("f2");
+        String subjectCd = req.getParameter("f3");
+        String numStr = req.getParameter("f4");
+
+        int entYear = 0;
+        int num = 0;
+
+        if (entYearStr != null && !entYearStr.equals("0")) {
+            entYear = Integer.parseInt(entYearStr);
+        }
+        if (numStr != null && !numStr.equals("0")) {
+            num = Integer.parseInt(numStr);
+        }
+
+        ClassNumDao cNumDao = new ClassNumDao();
+        SubjectDao subDao = new SubjectDao();
+        TestDao tDao = new TestDao();
+
         LocalDate todaysDate = LocalDate.now();
         int year = todaysDate.getYear();
         List<Integer> entYearSet = new ArrayList<>();
@@ -34,63 +50,38 @@ public class TestRegistAction extends Action {
             entYearSet.add(i);
         }
 
-        // クラス一覧
-        ClassNumDao cNumDao = new ClassNumDao();
         List<String> classNumSet = cNumDao.filter(school);
+        List<Subject> subjectSet = subDao.filter(school);
+        
+        List<Integer> numSet = new ArrayList<>();
+        numSet.add(1);
+        numSet.add(2);
 
-        // 科目一覧
-        SubjectDao sDao = new SubjectDao();
-        List<Subject> subjectSet = sDao.filter(school);
+        System.out.println("--- 検索パラメータチェック ---");
+        System.out.println("入学年度: " + entYear);
+        System.out.println("クラス: " + classNum);
+        System.out.println("科目コード: " + subjectCd);
+        System.out.println("回数: " + num);
+        System.out.println("学校コード: " + school.getCd());
 
-        // 試験回数（通常は1回、2回）
-        List<Integer> testNoSet = new ArrayList<>();
-        testNoSet.add(1);
-        testNoSet.add(2);
-
-        // 2. リクエストパラメータの取得（検索ボタン押下時）
-        String entYearStr = req.getParameter("f1"); // 入学年度
-        String classNum = req.getParameter("f2");   // クラス
-        String subjectCd = req.getParameter("f3");  // 科目コード
-        String testNoStr = req.getParameter("f4");  // 回数
-
-        int entYear = 0;
-        int testNo = 0;
-        List<Test> tests = null;
-
-        // 3. 検索処理
-        // 全ての条件が選択されている場合のみDBから成績リストを取得
-        if (entYearStr != null && classNum != null && subjectCd != null && testNoStr != null && 
-            !classNum.equals("0") && !subjectCd.equals("0")) {
-            
-            entYear = Integer.parseInt(entYearStr);
-            testNo = Integer.parseInt(testNoStr);
-            
-            // 選択された科目のインスタンスを取得
-            Subject subject = new Subject();
-            subject.setCd(subjectCd);
-            // 本来はSubjectDao.get(subjectCd)で名前等も引くのが丁寧ですが、
-            // filterメソッド内ではコードが合致すれば良いので簡易的にセット
-            
-            TestDao tDao = new TestDao();
-            tests = tDao.filter(entYear, classNum, subject, testNo, school);
+        if (entYear != 0 && classNum != null && !classNum.equals("0") && subjectCd != null && !subjectCd.equals("0") && num != 0) {
+            Subject subject = subDao.get(subjectCd, school);
+            if (subject != null) {
+                List<Test> tests = tDao.filter(entYear, classNum, subject, num, school);
+                req.setAttribute("tests", tests);
+            }
         }
 
-        // 4. JSPに渡すデータをセット
-        req.setAttribute("ent_year_set", entYearSet);
-        req.setAttribute("class_num_set", classNumSet);
-        req.setAttribute("subject_set", subjectSet);
-        req.setAttribute("test_no_set", testNoSet);
-        
-        // 検索結果（学生リスト）
-        req.setAttribute("tests", tests);
-        
-        // 選択状態を保持するためにパラメータを戻す
         req.setAttribute("f1", entYear);
         req.setAttribute("f2", classNum);
         req.setAttribute("f3", subjectCd);
-        req.setAttribute("f4", testNo);
+        req.setAttribute("f4", num);
+        
+        req.setAttribute("ent_year_set", entYearSet);
+        req.setAttribute("class_num_set", classNumSet);
+        req.setAttribute("subject_set", subjectSet);
+        req.setAttribute("num_set", numSet);
 
-        // 5. 成績登録画面へフォワード
         req.getRequestDispatcher("test_regist.jsp").forward(req, res);
     }
 }
