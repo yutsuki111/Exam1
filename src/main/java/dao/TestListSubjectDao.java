@@ -22,6 +22,7 @@ public class TestListSubjectDao extends Dao {
         Connection connection = getConnection();
         PreparedStatement statement = null;
 
+        // 学生を主軸に、指定科目の成績をLEFT JOINで取得するSQL
         String sql = "SELECT s.NO, s.NAME, s.ENT_YEAR, s.CLASS_NUM, t.NO AS TEST_NO, t.POINT " +
                      "FROM STUDENT s " +
                      "LEFT JOIN TEST t ON s.NO = t.STUDENT_NO AND t.SUBJECT_CD = ? " +
@@ -48,11 +49,14 @@ public class TestListSubjectDao extends Dao {
                     tls.setName(rSet.getString("name"));
                     tls.setEntYear(rSet.getInt("ent_year"));
                     tls.setClassNum(rSet.getString("class_num"));
+                    //検索条件のSubjectから科目名を取得してセットする
+                    tls.setSubjectName(subject.getName());
+                    
                     map.put(no, tls);
                     list.add(tls);
                 }
 
-               
+                // 回数(TEST_NO)に応じた点数をセット
                 int testNo = rSet.getInt("test_no");
                 int point = rSet.getInt("point");
                 if (testNo > 0) {
