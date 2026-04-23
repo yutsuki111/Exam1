@@ -11,10 +11,10 @@
             <form action="SubjectUpdateExecute.action" method="post" class="mx-4">
 
                 <%-- 科目コード  --%>
-                <div class="mb-3 row">
-                    <label for="cd" class="col-sm-2 col-form-label fw-bold">科目コード</label>
-                    <div class="col-sm-6">
-                 		<input type="text" name="cd" value="${subject.cd}" disabled>
+                <div class="mb-2">
+                    <label for="cd">科目コード</label>
+                    <div class="ms-3">
+                 		<p>${subject.cd}</p>
                  		<input type="hidden" name="cd" value="${subject.cd}">
                        <p>${errortext }</p>
                     </div>
@@ -22,9 +22,9 @@
 
                 <%--科目 --%>
                 <div class="mb-3 row">
-                    <label for="name" class="col-sm-2 col-form-label fw-bold">科目</label>
-                    <div class="col-sm-4">
-                        <input type="text" id="name" name="name" value="${subject.name}">
+                    <label for="name">科目</label>
+                    <div class="mx-auto">
+                        <input type="text" id="name" name="name" value="${subject.name}" class="form-control"  required>
                     </div>
                 </div>
 
