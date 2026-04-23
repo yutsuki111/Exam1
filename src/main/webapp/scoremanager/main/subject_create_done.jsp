@@ -10,23 +10,18 @@
     <!-- base.jsp のメインコンテンツ領域に埋め込まれる -->
         <section class="me-4">
 
-            <h2>科目情報登録</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
             <!-- 科目情報変更完了画面 -->
-            <div style="
-                background-color: #c8e6c9;
-                border: 1px solid #8bc34a;
-                padding: 10px 15px;
-                font-size: 1.2rem;
-                margin: 20px 0;">
+            <div class="text-center" style="background-color: #6EC8B5;">
                 登録が完了しました
             </div>
             <!-- 成功メッセージ -->
-
-            <p><a href="menu.jsp">戻る</a></p>
-			<!-- メニュー画面へのリンク -->
-            <p><a href="SubjectList.action">科目一覧</a></p>
-            <!-- 科目一覧画面へのリンク -->
-
+			<div style="display: flex; gap: 50px; padding-top: 70px;">
+	            <p><a href="menu.jsp">戻る</a></p>
+				<!-- メニュー画面へのリンク -->
+	            <p><a href="SubjectList.action">科目一覧</a></p>
+	            <!-- 科目一覧画面へのリンク -->
+			</div>
         </section>
     </c:param>
 </c:import>

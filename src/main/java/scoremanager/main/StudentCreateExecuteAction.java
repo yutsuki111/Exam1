@@ -39,6 +39,23 @@ public class StudentCreateExecuteAction extends Action {
 
 		// 3. ビジネスロジック：重複チェック (設計書 image_47b9e7.png 対応)
 		Student existingStudent = sDao.get(no);
+		if (entYearStr.equals("0")){
+			// すでに学生番号が存在する場合
+			errors.put("f1", "入学年度を選択してください");
+			req.setAttribute("errors", errors);
+			
+			// 登録画面へ戻るために、Actionを再実行（または直接JSPへ。ここではAction経由を推奨）
+			// 入力値を保持させるためにリクエストにセット
+			req.setAttribute("no", no);
+			req.setAttribute("name", name);
+			req.setAttribute("ent_year", entYear);
+			req.setAttribute("class_num", classNum);
+			
+			// StudentCreate.actionへフォワードして、プルダウンを再取得させる
+			req.getRequestDispatcher("StudentCreate.action").forward(req, res);
+			return;
+		}
+		
 		if (existingStudent != null) {
 			// すでに学生番号が存在する場合
 			errors.put("no", "学生番号が重複しています");

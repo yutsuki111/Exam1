@@ -15,14 +15,10 @@
                 変更が完了しました
             </div>
             <!-- 成功メッセージ -->
-			<div class="row" style="padding-top: 50px;">
-    			<div class="col-2">
-            		<p><a href="menu.jsp">戻る</a></p>
-            	</div>
-    			<div class="col-2">
-					<!-- メニュー画面へのリンク -->
-		            <p><a href="SubjectList.action">科目一覧</a></p>
-            	</div>
+			<div style="display: flex; gap: 50px; padding-top: 70px;">
+            	<a href="menu.jsp">戻る</a>
+				<!-- メニュー画面へのリンク -->
+		        <a href="SubjectList.action">科目一覧</a>
 				<!-- 科目一覧画面へのリンク -->
         </section>
     </c:param>

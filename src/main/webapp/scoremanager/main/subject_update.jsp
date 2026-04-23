@@ -12,7 +12,7 @@
 
                 <%-- 科目コード  --%>
                 <div class="mb-2">
-                    <label for="cd">科目コード</label>
+                    <label class="col-form-label">科目コード</label>
                     <div class="ms-3">
                  		<p>${subject.cd}</p>
                  		<input type="hidden" name="cd" value="${subject.cd}">

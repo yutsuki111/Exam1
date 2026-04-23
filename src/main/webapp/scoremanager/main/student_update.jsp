@@ -11,27 +11,27 @@
             <form action="StudentUpdateExecute.action" method="post" class="mx-4">
                 
                 <%-- 入学年度 (readonly: 設計書に基づき編集不可) --%>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label fw-bold">入学年度</label>
-                    <div class="col-sm-4">
+                <div class="mb-2">
+                    <label class="col-form-label ">入学年度</label>
+                    <div class="ms-3">
                         <input type="text" class="form-control-plaintext" name="ent_year" 
                                value="${student.entYear}" readonly>
                     </div>
                 </div>
 
                 <%-- 学生番号 (readonly: 設計書に基づき編集不可) --%>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label fw-bold">学生番号</label>
-                    <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class=" col-form-label ">学生番号</label>
+                    <div class="ms-3">
                         <input type="text" class="form-control-plaintext" name="no" 
                                value="${student.no}" readonly>
                     </div>
                 </div>
 
                 <%-- 氏名 (必須入力・最大30文字) --%>
-                <div class="mb-3 row">
-                    <label for="student-name" class="col-sm-2 col-form-label fw-bold">氏名</label>
-                    <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="student-name" class="col-form-label">氏名</label>
+                    <div class="mx-auto">
                         <input type="text" class="form-control" id="student-name" name="name" 
                                value="${student.name}" maxlength="30" required 
                                placeholder="氏名を入力してください">
@@ -43,9 +43,9 @@
                 </div>
 
                 <%-- クラス --%>
-                <div class="mb-3 row">
-                    <label for="student-class" class="col-sm-2 col-form-label fw-bold">クラス</label>
-                    <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="student-class" class="col-form-label">クラス</label>
+                    <div class="mx-auto">
                         <select class="form-select" id="student-class" name="class_num">
                             <c:forEach var="num" items="${class_num_set}">
                                 <option value="${num}" <c:if test="${num == student.classNum}">selected</c:if>>${num}</option>
@@ -55,9 +55,8 @@
                 </div>
 
                 <%-- 在学中チェックボックス --%>
-                <div class="mb-4 row">
-                    <div class="col-sm-2 fw-bold">在学中</div>
-                    <div class="col-sm-10">
+                <div class="mb-4">
+                    <div class="">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="student-is-attend" 
                                    name="is_attend" value="t" <c:if test="${student.isAttend()}">checked</c:if>>

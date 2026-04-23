@@ -28,7 +28,7 @@ public class SubjectCreateExecuteAction extends Action {
 		// 科目コードが3文字より大きいとき
 		if(cd.length() > 3 ) {
 			// リクエストにデータをセット
-			req.setAttribute("lengherrortext", "科目コードは3文字で入力してください");
+			req.setAttribute("lenerrortext", "科目コードは3文字で入力してください");
 			// ubject_create.jspにフォア―ド
 			req.getRequestDispatcher("subject_create.jsp").forward(req, res);
 			return;

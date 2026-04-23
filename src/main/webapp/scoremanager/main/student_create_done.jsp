@@ -22,7 +22,7 @@
 
 			<div class="row" style="padding-top: 50px;">
     			<div class="col-2">
-        			<a href="student_register.jsp">戻る</a>
+        			<a href="menu.jsp">戻る</a>
     			</div>
     			<div class="col-2">
         			<a href="StudentList.action">学生一覧</a>

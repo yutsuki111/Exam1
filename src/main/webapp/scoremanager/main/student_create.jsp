@@ -13,7 +13,7 @@
                 <%-- 入学年度 --%>
                 <div class="mb-3">
                     <label for="ent-year-select" class="form-label">入学年度</label>
-                    <select class="form-select" id="ent-year-select" name="ent_year">
+                    <select class="form-select" id="ent-year-select" name="ent_year" required>
                         <option value="0">--------</option>
                         <c:forEach var="year" items="${ent_year_set}">
                             <option value="${year}" <c:if test="${year == ent_year}">selected</c:if>>${year}</option>
@@ -21,7 +21,7 @@
                     </select>
                     <%-- 入学年度未選択エラー --%>
                     <c:if test="${not empty errors.get('f1')}">
-                        <div class="text-danger small mt-1">${errors.get("f1")}</div>
+                        <div class="small mt-1" style="color: orange;">${errors.get("f1")}</div>
                     </c:if>
                 </div>
 
@@ -33,7 +33,7 @@
                            placeholder="学生番号を入力してください">
                     <%-- 学生番号重複エラー,未入力エラー --%>
                     <c:if test="${not empty errors.get('no')}">
-                        <div class="text-danger small mt-1">${errors.get("no")}</div>
+                        <div class=" small mt-1" style="color: orange;">${errors.get("no")}</div>
                     </c:if>
                 </div>
 
@@ -43,10 +43,6 @@
                     <input type="text" class="form-control" id="student-name" name="name" 
                            value="${name}" maxlength="30" required 
                            placeholder="氏名を入力してください">
-                    <%-- 氏名未入力エラー --%>
-                    <c:if test="${not empty errors.get('name')}">
-                        <div class="text-danger small mt-1">${errors.get("name")}</div>
-                    </c:if>
                 </div>
 
                 <%-- クラス --%>

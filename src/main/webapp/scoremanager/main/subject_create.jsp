@@ -17,7 +17,7 @@
              class="form-control" required>
     </div>
     <!-- エラー文（ないときは表示されない） -->
-    <p>${ lengherrortext}</p>
+    <p style="color: orange;">${ lenerrortext}</p>
     <div class="mb-3">
     <!-- 科目名 -->
 	<label class="form-label">科目名</label>
