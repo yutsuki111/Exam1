@@ -2,10 +2,10 @@ package scoremanager.main;
 
 import java.util.List;
 
-import bean.School;
 import bean.Student;
 import bean.Teacher;
 import bean.TestListStudent;
+import dao.StudentDao;
 import dao.TestListStudentDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,38 +13,29 @@ import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class TestListStudentExecuteAction extends Action {
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        HttpSession session = req.getSession();
+        Teacher teacher = (Teacher) session.getAttribute("user");
 
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        String studentNo = req.getParameter("f4"); // 学生番号
 
-		// リクエストパラメータの取得
-		String no = req.getParameter("f4");
+        // 学生情報を取得
+        StudentDao sDao = new StudentDao();
+        Student student = sDao.get(studentNo);
 
-		// セッションを取得
-		HttpSession session = req.getSession(); 
-		// ログイン中のTeacher情報を取得
-		Teacher teacher = (Teacher)session.getAttribute("user"); 
-		if (teacher == null) {
-		    // ログインしていない
-		    req.getRequestDispatcher("login.jsp").forward(req, res);
-		    return;
-		}
-		// ログイン中のteacherが所属しているSchoolを取り出す
-		School school = teacher.getSchool();
-		Student student = new Student();
+        if (student != null) {
+            // 成績リストを取得
+            TestListStudentDao tlsDao = new TestListStudentDao();
+            List<TestListStudent> list = tlsDao.filter(student);
 
-		
-		// 更新用データの作成
-		student.setNo(no);
-		student.setSchool(school);
+            req.setAttribute("student", student);
+            req.setAttribute("test_list", list);
+        } else {
+            req.setAttribute("error", "学生情報が存在しませんでした");
+        }
 
-		// DB更新実行
-		TestListStudentDao tlsDao = new TestListStudentDao();
-		List<TestListStudent> testList = tlsDao.filter(student);
-
-		req.setAttribute("f4", no);
-		req.setAttribute("test_list", testList);
-		// 完了画面へフォワード
-		req.getRequestDispatcher("test_list_student.jsp").forward(req, res);
-	}
+        // 結果画面へ（科目別と同じJSPを使う場合は、分岐が必要です）
+        req.getRequestDispatcher("test_list_student.jsp").forward(req, res);
+    }
 }

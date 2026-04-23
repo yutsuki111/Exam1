@@ -11,15 +11,12 @@ import bean.TestListStudent;
 
 public class TestListStudentDao extends Dao {
 
-    /**
-     * 特定の学生の全成績を検索する
-     */
     public List<TestListStudent> filter(Student student) throws Exception {
         List<TestListStudent> list = new ArrayList<>();
         Connection connection = getConnection();
         PreparedStatement statement = null;
 
-        // 試験結果と科目名を結合して取得
+        // TESTテーブルとSUBJECTテーブルを結合して、科目名も一緒に取る
         String sql = "SELECT sub.NAME AS SUBJECT_NAME, t.SUBJECT_CD, t.NO, t.POINT " +
                      "FROM TEST t " +
                      "JOIN SUBJECT sub ON t.SUBJECT_CD = sub.CD AND t.SCHOOL_CD = sub.SCHOOL_CD " +
@@ -33,21 +30,17 @@ public class TestListStudentDao extends Dao {
 
             while (rSet.next()) {
                 TestListStudent tls = new TestListStudent();
-                tls.setSubjectName(rSet.getString("subject_name"));
-                tls.setSubjectCd(rSet.getString("subject_cd"));
-                tls.setNum(rSet.getInt("no"));
-                tls.setPoint(rSet.getInt("point"));
+                tls.setSubjectName(rSet.getString("SUBJECT_NAME"));
+                tls.setSubjectCd(rSet.getString("SUBJECT_CD"));
+                tls.setNum(rSet.getInt("NO"));
+                tls.setPoint(rSet.getInt("POINT"));
                 list.add(tls);
             }
         } catch (Exception e) {
             throw e;
         } finally {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
         }
         return list;
     }

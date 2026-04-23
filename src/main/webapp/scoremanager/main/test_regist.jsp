@@ -11,7 +11,6 @@
             <%-- 検索フィルタ部分 --%>
             <form action="TestRegist.action" method="get">
                 <div class="row border mx-3 mb-3 py-2 align-items-end rounded shadow-sm">
-                    <%-- 入学年度 --%>
                     <div class="col-2">
                         <label class="form-label" for="f1">入学年度</label>
                         <select class="form-select" id="f1" name="f1">
@@ -21,7 +20,6 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <%-- クラス --%>
                     <div class="col-2">
                         <label class="form-label" for="f2">クラス</label>
                         <select class="form-select" id="f2" name="f2">
@@ -31,7 +29,6 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <%-- 科目 --%>
                     <div class="col-3">
                         <label class="form-label" for="f3">科目</label>
                         <select class="form-select" id="f3" name="f3">
@@ -41,7 +38,6 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <%-- 回数 --%>
                     <div class="col-2">
                         <label class="form-label" for="f4">回数</label>
                         <select class="form-select" id="f4" name="f4">
@@ -50,7 +46,6 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <%-- 検索ボタン --%>
                     <div class="col-2 text-center">
                         <button class="btn btn-secondary w-100" id="filter-button">検索</button>
                     </div>
@@ -63,15 +58,8 @@
                     <div class="mx-3 mt-4">
                         <p>科目：${tests[0].subject.name} （第${f4}回）</p>
 
-                        <c:if test="${not empty errors}">
-                            <div class="mb-3">
-                                <c:forEach var="error" items="${errors}">
-                                    <p class="text-danger small mb-0">${error}</p>
-                                </c:forEach>
-                            </div>
-                        </c:if>
-                        
                         <form action="TestRegistExecute.action" method="post">
+                            <%-- 科目コードと回数を送信するための隠し項目 --%>
                             <input type="hidden" name="subject_cd" value="${f3}">
                             <input type="hidden" name="num" value="${f4}">
 
@@ -86,16 +74,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="test" items="${tests}" varStatus="status">
+                                    <c:forEach var="test" items="${tests}">
                                         <tr>
                                             <td>${test.student.entYear}</td>
                                             <td>${test.student.classNum}</td>
                                             <td>${test.student.no}</td>
                                             <td>${test.student.name}</td>
                                             <td>
-                                                <%-- -1以外なら点数を表示、-1なら空文字にする --%>
-												<input type="number" name="point" class="form-control" 
-												       value="${test.point >= 0 ? test.point : ''}">
+                                                <%-- 各行の学生番号を隠し項目として送信する --%>
+                                                <input type="hidden" name="student_no" value="${test.student.no}">
+                                                
+                                                <%-- 点数の入力欄 --%>
+                                                <input type="number" name="point" class="form-control" 
+                                                       value="${test.point >= 0 ? test.point : ''}"
+                                                       min="0" max="100">
                                             </td>
                                         </tr>
                                     </c:forEach>
