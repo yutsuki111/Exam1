@@ -24,12 +24,12 @@
 
                 <%-- 削除ボタン --%>
                 <div>
-                    <button type="submit" class="btn btn-primary">削除</button>
+                    <button type="submit" class="btn btn-danger">削除</button>
                 </div>
             </form>
-
+			
             <%-- 戻るリンク --%>
-            <div class="mx-4 mt-3">
+            <div style="padding-top: 50px;">
                 <a href="SubjectList.action">戻る</a>
             </div>
         </section>
