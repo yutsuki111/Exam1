@@ -16,7 +16,7 @@
     <c:param name="content">
 
         <div>
-            <h2 class="bg-dark bg-opacity-10">ログアウト</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">ログアウト</h2>
             <!-- 見出し色-->
 
             <div class="text-center" style="background-color: #6EC8B5;">
@@ -24,10 +24,11 @@
                 <!-- ログアウト完了メッセージ -->
             </div>
         </div>
-
-        <a href="../Login.action" class="text-center" style="margin-top: 20px;">
+		<div style="padding-top: 50px;">
+        <a href="../Login.action" class="text-center">
             ログイン
         </a>
+        </div>
         <!-- ログイン画面へのリンク -->
 
     </c:param>

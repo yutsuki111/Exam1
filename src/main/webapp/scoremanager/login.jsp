@@ -9,8 +9,8 @@
 	
 	<c:param name="content">
  	<form action="LoginExecute.action" method="post" class="text-center">
-		<div class="row border mx-3 mb-3 py-2 align-items-center rounded ">
-		    <h2 class="mb-4">ログイン</h2>
+		<div class="row border mx-auto  mb-3 align-items-center"  style="width:75%;">
+		    <h2 class="mb-4 py-2 bg-dark bg-opacity-10 border-top border-3" style="margin-top: 0;">ログイン</h2>
 		    <!-- エラーテキスト -->
 			<div class="text-center">${errortext }</div>
 			<!-- id -->
@@ -21,7 +21,7 @@
 		
 		    <div class="mb-3">
 		    <!-- パスワード -->
-		      <input type="password" name="password" id="password-field"
+		    <input type="password" name="password" id="password-field"
 		             placeholder="パスワード"
 		             class="form-control mx-auto" style="max-width: 250px;" required>
 		    </div>
@@ -32,9 +32,9 @@
 		        パスワードを表示する
 		      </label>
 		    </div>
-		    <div>
+		    <div class="py-2">
 		    <!-- ログインボタン -->
-		      <input type="submit" value="ログイン" class="btn btn-primary">
+		      <input type="submit" value="ログイン" class="btn btn-primary w-25">
 		    </div>
 		</div>
 	</form>
