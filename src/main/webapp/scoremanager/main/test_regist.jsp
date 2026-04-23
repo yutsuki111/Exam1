@@ -93,12 +93,9 @@
                                             <td>${test.student.no}</td>
                                             <td>${test.student.name}</td>
                                             <td>
-                                                <%-- 学生番号を配列として送る --%>
-                                                <input type="hidden" name="student_no" value="${test.student.no}">
-                                                
-                                                <%-- 点数の入力欄。-1の場合は空文字にする --%>
-                                                <input type="number" name="point" class="form-control" 
-                                                       value="<c:if test="${test.point != -1}">${test.point}</c:if>">
+                                                <%-- -1以外なら点数を表示、-1なら空文字にする --%>
+												<input type="number" name="point" class="form-control" 
+												       value="${test.point >= 0 ? test.point : ''}">
                                             </td>
                                         </tr>
                                     </c:forEach>
