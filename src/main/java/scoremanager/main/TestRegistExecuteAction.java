@@ -54,7 +54,7 @@ public class TestRegistExecuteAction extends Action {
                 test.setStudent(student);
 
                 // 点数の変換処理
-                int point = -1; // 初期値は未入力扱い　他のjavaで未入力は-1に指定済み
+                int point = -1; // 初期値は未入力
                 if (pointsStr[i] != null && !pointsStr[i].isEmpty()) {
                     point = Integer.parseInt(pointsStr[i]);
                 }

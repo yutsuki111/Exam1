@@ -60,7 +60,7 @@ public class TestRegistAction extends Action {
         numSet.add(1);
         numSet.add(2);
 
-        System.out.println("--- 検索パラメータチェック ---");
+        System.out.println("--- 検索チェック ---");
         System.out.println("入学年度: " + entYear);
         System.out.println("クラス: " + classNum);
         System.out.println("科目コード: " + subjectCd);
