@@ -9,26 +9,33 @@
 	
 	<c:param name="content">
  	<form action="LoginExecute.action" method="post" class="text-center">
-		<div class="row border mx-auto  mb-3 align-items-center"  style="width:75%;">
+		<div class="border mx-auto  mb-3 align-items-center"  style="width:75%;">
 		    <h2 class="mb-4 py-2 bg-dark bg-opacity-10 border-top border-3" style="margin-top: 0;">ログイン</h2>
 		    <!-- エラーテキスト -->
-			<div class="text-center">${errortext }</div>
+		    <c:if test="${not empty errortext}">
+			    <ul>
+			    	<li >
+			    		<div class="text-center">${errortext }</div>
+			    	</li>
+			    </ul>
+			</c:if>
 			<!-- id -->
 		    <div class="mb-3">
-		      <input type="text" name="id" placeholder="id" 
-		             class="form-control mx-auto" style="max-width: 250px;" required>
+		    	
+		    	<input type="text" name="id" placeholder="半角でご入力ください" value="${id }"
+		             class="form-control mx-auto" style="max-width: 600px; height: 50px; padding-left: 2em;" maxlength="10" required>
 		    </div>
 		
 		    <div class="mb-3">
 		    <!-- パスワード -->
-		    <input type="password" name="password" id="password-field"
-		             placeholder="パスワード"
-		             class="form-control mx-auto" style="max-width: 250px;" required>
+		    <input type="password" name="password" id="password-field" value="${password }"
+		             placeholder="30文字以内の半角英数字でご入力ください"
+		             class="form-control mx-auto" style="max-width: 600px; height: 50px; padding-left: 2em;" maxlength="30" required>
 		    </div>
 			<!-- パスワードを表示するチェックボックス -->
 		    <div class="form-check mb-3 d-flex justify-content-center">
-		      <input class="form-check-input" type="checkbox" id="chk_ps">
-		      <label class="form-check-label ms-2" for="chk_ps">
+		      <input class="form-check-input" type="checkbox" id="chk_d_ps" name="chk_d_ps">
+		      <label class="form-check-label ms-2" for="chk_d_ps">
 		        パスワードを表示する
 		      </label>
 		    </div>
@@ -41,7 +48,7 @@
 <!-- パスワードを表示の処理 -->
 <script>
   const pwInput = document.getElementById('password-field');
-  const toggleBtn = document.getElementById('chk_ps');
+  const toggleBtn = document.getElementById('chk_d_ps');
 
   // チェックボックスの状態が変わったら、typeを切り替える
   toggleBtn.addEventListener('change', function() {
@@ -50,6 +57,7 @@
     } else {
       pwInput.type = 'password'; // 伏せ字に戻す（隠す！）
     }
+    
   });
 </script>
 </c:param>

@@ -25,6 +25,8 @@ public class LoginExecuteAction extends Action {
 			// リクエストデータにセット
 			req.setAttribute("errortext", "ログインに失敗しました。IDまたはパスワードが正しくありません。");
 			// login.jspにフォア―ド
+			req.setAttribute("id", id);
+			req.setAttribute("password", password);
 			req.getRequestDispatcher("login.jsp").forward(req, res);
 			return;
 		// 成功時
