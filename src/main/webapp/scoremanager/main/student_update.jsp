@@ -56,13 +56,9 @@
 
                 <%-- 在学中チェックボックス --%>
                 <div class="mb-4">
-                    <div class="">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="student-is-attend" 
+                    	<label class="form-check-label" for="student-is-attend">在学中</label>
+                            <input class="" type="checkbox" id="student-is-attend" 
                                    name="is_attend" value="t" <c:if test="${student.isAttend()}">checked</c:if>>
-                            <label class="form-check-label" for="student-is-attend">在学中</label>
-                        </div>
-                    </div>
                 </div>
 
                 <%-- 変更ボタン --%>

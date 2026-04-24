@@ -18,14 +18,14 @@
     </div>
     <!-- エラー文（ないときは表示されない） -->
     <p style="color: orange;">${ lenerrortext}</p>
+    <p style="color: orange;">${duperrortext }</p>
     <div class="mb-3">
     <!-- 科目名 -->
 	<label class="form-label">科目名</label>
       <input type="text" name="name" placeholder="科目名を入力してください" 
              class="form-control" required>
     </div>
-    <!-- エラー文（ないときは表示されない） -->
-    <p>${duperrortext }</p>
+
     <div class="mb-3">
     <!-- 登録ボタン -->
     <input type="submit" value="登録" class="btn btn-primary">
