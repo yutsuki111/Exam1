@@ -16,7 +16,7 @@ public class LoginAction extends Action {
 	        return;
 	    }else {
 	    	// login.jspにフォア―ド
-	    	res.sendRedirect("main/menu.jsp");
+	    	res.sendRedirect("main/Menu.action");
 	    }
 		
 	}

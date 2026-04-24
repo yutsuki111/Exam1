@@ -27,8 +27,8 @@
 		</header>
 
 		<div class="row justify-content-center">
-            <main class="col-9 border-start　text-center"> 
-            	<a href="Login.action">ログイン</a>
+            <main class="col-9 border-start"> 
+            	<p class="text-center"><a href="Login.action">ログイン</a><p>
             </main>
 		</div>
 		<footer class="py-2 my-4 bg-dark bg-opacity-10 border-top border-3 align-bottom">
