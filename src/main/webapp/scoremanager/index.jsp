@@ -1,4 +1,5 @@
-<%-- 共通テンプレート --%>
+<%-- index　ログイン有無に関わらず共通 --%>
+<%-- base.jspの　ログインチェックを削除 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
@@ -26,20 +27,9 @@
 		</header>
 
 		<div class="row justify-content-center">
- <%-- ログインチェックをコメントアウト --%>
-    <c:choose>
-        <c:when test="${user.isAuthenticated()}">
-            </nav>
             <main class="col-9 border-start　text-center"> 
             	<a href="Login.action">ログイン</a>
             </main>
-    	</c:when>
-        <c:otherwise>
-            <main class="col-9 border-start　text-center"> 
-            	<a href="Login.action">ログイン</a>
-            </main>
-        </c:otherwise>
-    </c:choose>
 		</div>
 		<footer class="py-2 my-4 bg-dark bg-opacity-10 border-top border-3 align-bottom">
 			<c:import url="/common/footer.jsp" />
