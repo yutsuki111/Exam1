@@ -7,7 +7,7 @@ import tool.Action;
 public class MenuAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res)
-	throws Exception{	    
+	throws Exception{
 		// menu.jspにフォア―ド
 		req.getRequestDispatcher("menu.jsp").forward(req, res);
 	}
