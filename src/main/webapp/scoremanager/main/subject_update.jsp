@@ -24,7 +24,7 @@
                 <div class="mb-3 row">
                     <label for="name">科目名</label>
                     <div class="mx-auto">
-                        <input type="text" id="name" name="name" value="${subject.name}" class="form-control"  required>
+                        <input type="text" id="name" name="name" value="${subject.name}" class="form-control" maxlength="20"  required>
                     </div>
                 </div>
 
