@@ -87,6 +87,28 @@ public class TestListSubjectExecuteAction extends Action {
         req.setAttribute("class_num_set", list);
         req.setAttribute("ent_year_set", entYearSet);
 	    req.setAttribute("test_list", testList);
+	    
+        double sum1 = 0; int count1 = 0;
+        double sum2 = 0; int count2 = 0;
+
+        for (TestListSubject t : testList) {
+            if (t.getPoint(1) >= 0) { 
+                sum1 += t.getPoint(1); 
+                count1++; 
+            }
+            if (t.getPoint(2) >= 0) { 
+                sum2 += t.getPoint(2); 
+                count2++; 
+            }
+        }
+        
+        // データがない（全員-1）場合は -1 をセットする
+        double avg1 = (count1 > 0) ? sum1 / count1 : -1;
+        double avg2 = (count2 > 0) ? sum2 / count2 : -1;
+
+        req.setAttribute("avg1", avg1);
+        req.setAttribute("avg2", avg2);
+        
 		// 完了画面へフォワード
 		req.getRequestDispatcher("test_list_subject.jsp").forward(req, res);
 	}

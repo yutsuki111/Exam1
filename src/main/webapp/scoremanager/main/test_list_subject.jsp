@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%-- 共通レイアウト base.jsp を読み込み、title と content を渡す --%>
 <c:import url="/common/base.jsp">
     
@@ -126,6 +126,30 @@
                                     </tr>
                                 </c:forEach>
                             </tbody>
+
+						<tfoot class="bg-light fw-bold border-top">
+						    <tr>
+						        <td colspan="4" class="text-end">平均点</td>
+						        <td class="text-end">
+						            <c:choose>
+						                <c:when test="${avg1 >= 0}">
+						                    
+						                    <fmt:formatNumber value="${avg1}" maxFractionDigits="2" minFractionDigits="2" />点
+						                </c:when>
+						                <c:otherwise>-</c:otherwise>
+						            </c:choose>
+						        </td>
+						        <td class="text-end">
+						            <c:choose>
+						                <c:when test="${avg2 >= 0}">
+						                    
+						                    <fmt:formatNumber value="${avg2}" maxFractionDigits="2" minFractionDigits="2" />点
+						                </c:when>
+						                <c:otherwise>-</c:otherwise>
+						            </c:choose>
+						        </td>
+						    </tr>
+						</tfoot>
                         </table>
                     </c:when>
 

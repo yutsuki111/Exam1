@@ -35,7 +35,7 @@ public class TestListStudentExecuteAction extends Action {
             req.setAttribute("error", "学生情報が存在しませんでした");
         }
 
-        // 結果画面へ（科目別と同じJSPを使う場合は、分岐が必要です）
+        // 結果画面
         req.getRequestDispatcher("test_list_student.jsp").forward(req, res);
     }
 }
