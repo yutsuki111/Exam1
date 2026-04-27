@@ -9,14 +9,13 @@
     <!-- base.jsp のメインコンテンツ領域に埋め込まれる -->
         <section class="me-4">
 
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報変更</h2>
             <!-- 科目情報登録完了画面 -->
             <div class="text-center" style="background-color: #6EC8B5;">
                 変更が完了しました
             </div>
             <!-- 成功メッセージ -->
 			<div style="display: flex; gap: 50px; padding-top: 70px;">
-            	<a href="menu.jsp">戻る</a>
 				<!-- メニュー画面へのリンク -->
 		        <a href="SubjectList.action">科目一覧</a>
 				<!-- 科目一覧画面へのリンク -->
