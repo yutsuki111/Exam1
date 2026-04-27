@@ -45,7 +45,7 @@
                     </div>
 
                     <%-- 科目 --%>
-                    <div class="col-3">
+                    <div class="col-4">
                         <label class="form-label" for="f3">科目</label>
                         <select class="form-select" id="f3" name="f3">
                             <option value="0">--------</option>
@@ -56,14 +56,16 @@
                             </c:forEach>
                         </select>
                     </div>
-
-                    <%-- 回数（第1回・第2回など） --%>
+                    
+                    <%-- 回数 --%>
                     <div class="col-2">
                         <label class="form-label" for="f4">回数</label>
                         <select class="form-select" id="f4" name="f4">
+                            <option value="0">--------</option>
                             <c:forEach var="n" items="${num_set}">
+                                <%-- ★「第〇回」の指定を外し、元の数字のみに戻しました --%>
                                 <option value="${n}" <c:if test="${n == f4}">selected</c:if>>
-                                    第${n}回
+                                    ${n}
                                 </option>
                             </c:forEach>
                         </select>
@@ -71,7 +73,7 @@
 
                     <%-- 検索ボタン --%>
                     <div class="col-2 text-center">
-                        <button class="btn btn-secondary w-100" id="filter-button">検索</button>
+                        <button class="btn btn-secondary px-4" id="filter-button">検索</button>
                     </div>
                 </div>
             </form>
@@ -82,7 +84,7 @@
                     <div class="mx-3 mt-4">
 
                         <%-- 科目名と回数を表示 --%>
-                        <p>科目：${tests[0].subject.name} （第${f4}回）</p>
+                        <p>科目：${tests[0].subject.name} （${f4}回）</p>
 
                         <form action="TestRegistExecute.action" method="post">
 
@@ -109,18 +111,22 @@
                                             <td>${test.student.classNum}</td>
                                             <td>${test.student.no}</td>
                                             <td>${test.student.name}</td>
-
                                             <td>
-                                                <%-- 学生番号を hidden で送信（複数行分） --%>
-                                                <input type="hidden" name="student_no" value="${test.student.no}">
-
-                                                <%-- 点数入力欄（未登録なら空欄） --%>
-                                                <input type="number"
-                                                       name="point"
-                                                       class="form-control"
-                                                       value="${test.point >= 0 ? test.point : ''}"
-                                                       min="0" max="100">
-                                            </td>
+											    <input type="hidden" name="student_no" value="${test.student.no}">
+											
+											 
+											    <input type="number"
+											           name="point"
+											           class="form-control text-dark"
+											           value="${test.point >= 0 ? test.point : ''}">
+											    
+											<c:if test="${not empty errors and not empty errors[test.student.no]}">
+												    <div class="small mt-1" style="color: orange; white-space: nowrap;">
+												        ${errors[test.student.no]}
+												    </div>
+												</c:if>
+											</td>
+                                            
                                         </tr>
                                     </c:forEach>
                                 </tbody>
