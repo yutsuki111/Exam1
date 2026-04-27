@@ -32,9 +32,9 @@
 						<select class="form-select" id="student-f1-select" name="f1">
 							<option value="0">--------</option>
 							<%-- Actionクラスから渡された ent_year_setをループで回す --%>
-							<c:forEach var="ent_year" items="${ent_year_set }">
+							<c:forEach var="year" items="${ent_year_set }">
 								<%-- 検索後の再表示時、選択していた年度を保持する --%>
-								<option value="${ent_year }" <c:if test="${ent_year == f1 }">selected</c:if>>${ent_year }</option>
+								<option value="${year }" <c:if test="${year == f1 }">selected</c:if>>${year }</option>
 							</c:forEach>
 						</select>
 					</div>

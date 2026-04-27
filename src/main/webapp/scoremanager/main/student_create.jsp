@@ -29,7 +29,7 @@
                 <div class="mb-3">
                     <label for="student-no" class="form-label">学生番号</label>
                     <input type="text" class="form-control" id="student-no" name="no" 
-                           value="${no}" maxlength="10" required>
+                           value="${no}" maxlength="10" placeholder="学生番号を入力してください" required>
                     <%-- 学生番号重複エラー --%>
                     <c:if test="${not empty errors.get('no')}">
                         <div class="small mt-1" style="color: orange;">${errors.get("no")}</div>
@@ -40,7 +40,7 @@
                 <div class="mb-3">
                     <label for="student-name" class="form-label">氏名</label>
                     <input type="text" class="form-control" id="student-name" name="name" 
-                           value="${name}" maxlength="30" required>
+                           value="${name}" maxlength="30" placeholder="氏名を入力してください" required>
                 </div>
 
                 <%-- クラス --%>

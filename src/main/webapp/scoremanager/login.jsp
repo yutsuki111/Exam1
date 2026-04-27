@@ -41,7 +41,7 @@
 		    </div>
 		    <div class="py-2">
 		    <!-- ログインボタン -->
-		      <input type="submit" value="ログイン" class="btn btn-primary w-25">
+		      <input type="submit" value="ログイン" name="login" class="btn btn-primary w-25">
 		    </div>
 		</div>
 	</form>
