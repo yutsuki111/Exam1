@@ -22,7 +22,7 @@
 
                 <%--科目 --%>
                 <div class="mb-3 row">
-                    <label for="name">科目</label>
+                    <label for="name">科目名</label>
                     <div class="mx-auto">
                         <input type="text" id="name" name="name" value="${subject.name}" class="form-control"  required>
                     </div>
