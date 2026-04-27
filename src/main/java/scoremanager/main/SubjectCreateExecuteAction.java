@@ -25,8 +25,11 @@ public class SubjectCreateExecuteAction extends Action {
 		SubjectDao subDao = new SubjectDao();
 		// ログイン中のteacherが所属しているSchoolを取り出す
 		School school = teacher.getSchool();
+		
+		req.setAttribute("cd", cd);	
+		req.setAttribute("name", name);
 		// 科目コードが3文字より大きいとき
-		if(cd.length() > 3 ) {
+		if(cd.length() < 3 ) {
 			// リクエストにデータをセット
 			req.setAttribute("lenerrortext", "科目コードは3文字で入力してください");
 			// ubject_create.jspにフォア―ド

@@ -14,7 +14,7 @@
 	<!-- 科目コード（3文字以下） -->
 	<label class="form-label">科目コード</label>
       <input type="text" name="cd" placeholder="科目コードを入力してください" 
-             class="form-control" required>
+             class="form-control" maxlength="3" value="${cd}" required>
     </div>
     <!-- エラー文（ないときは表示されない） -->
     <p style="color: orange;">${ lenerrortext}</p>
@@ -23,7 +23,7 @@
     <!-- 科目名 -->
 	<label class="form-label">科目名</label>
       <input type="text" name="name" placeholder="科目名を入力してください" 
-             class="form-control" required>
+             class="form-control" maxlength="20" value="${name }" required>
     </div>
 
     <div class="mb-3">
