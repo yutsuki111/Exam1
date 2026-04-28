@@ -20,17 +20,21 @@
 			    </ul>
 			</c:if>
 			<!-- id -->
-		    <div class="mb-3">
+
+ 
+		    <div class="form-floating mb-3">
 		    	
-		    	<input type="text" name="id" placeholder="半角でご入力ください" value="${id }"
+		    	<input type="text" name="id" placeholder="半角でご入力ください" value="${id }" id="login-field"
 		             class="form-control mx-auto" style="max-width: 600px; height: 50px; padding-left: 2em;" maxlength="10" required>
+		        <label for="login-field" style="padding-left: 2em;">ID</label>
 		    </div>
 		
-		    <div class="mb-3">
+		    <div class="form-floating mb-3">
 		    <!-- パスワード -->
 		    <input type="password" name="password" id="password-field" value="${password }"
 		             placeholder="30文字以内の半角英数字でご入力ください"
 		             class="form-control mx-auto" style="max-width: 600px; height: 50px; padding-left: 2em;" maxlength="30" required>
+		    <label for="password-field" style="padding-left: 2em;">パスワード</label>
 		    </div>
 			<!-- パスワードを表示するチェックボックス -->
 		    <div class="form-check mb-3 d-flex justify-content-center">
