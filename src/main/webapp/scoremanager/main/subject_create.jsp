@@ -8,7 +8,7 @@
 	<c:param name="scripts"></c:param>
 	
 	<c:param name="content">
-	<h2 class="bg-dark bg-opacity-10 fw-bold">科目情報登録</h2>
+	<h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">科目情報登録</h2>
 	<form action="SubjectCreateExecute.action" method="get">
 	<div class="mb-3">
 	<!-- 科目コード（3文字以下） -->
