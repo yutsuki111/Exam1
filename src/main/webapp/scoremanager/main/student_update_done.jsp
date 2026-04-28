@@ -13,7 +13,7 @@
 
         <section class="me-4">
 
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">学生情報変更</h2>
             <!-- 学生情報変更完了画面 -->
 
             <div class="text-center" style="background-color: #6EC8B5;">

@@ -10,7 +10,7 @@
     <!-- base.jsp のメインコンテンツ領域に埋め込まれる -->
         <section class="me-4">
 
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">科目情報登録</h2>
             <!-- 科目情報変更完了画面 -->
             <div class="text-center" style="background-color: #6EC8B5;">
                 登録が完了しました
