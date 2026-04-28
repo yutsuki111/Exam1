@@ -20,7 +20,7 @@
     			登録が完了しました
 			</div>
 
-			<div class="row" style="padding-top: 50px;">
+			<div class="row" style="padding-top: 90px;">
     			<div class="col-2">
         			<a href="StudentCreate.action">戻る</a>
     			</div>

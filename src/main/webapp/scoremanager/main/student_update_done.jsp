@@ -20,7 +20,7 @@
                 変更が完了しました
             </div>
             <!-- 成功メッセージ -->
-			<div style="padding-top: 50px;">
+			<div style="padding-top: 90px;">
             	<a href="StudentList.action">学生一覧</a>
             </div>
             <!-- 学生一覧画面へのリンク -->

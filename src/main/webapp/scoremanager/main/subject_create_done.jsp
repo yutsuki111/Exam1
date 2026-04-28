@@ -16,7 +16,7 @@
                 登録が完了しました
             </div>
             <!-- 成功メッセージ -->
-			<div style="display: flex; gap: 50px; padding-top: 70px;">
+			<div style="display: flex; gap: 50px; padding-top: 90px;">
 	            <p><a href="SubjectCreate.action">戻る</a></p>
 				<!-- メニュー画面へのリンク -->
 	            <p><a href="SubjectList.action">科目一覧</a></p>
