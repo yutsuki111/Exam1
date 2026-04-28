@@ -56,8 +56,8 @@
 
                 <%-- 在学中チェックボックス --%>
                 <div class="mb-4">
-                    	<label class="form-check-label" for="student-is-attend">在学中</label>
-                            <input class="" type="checkbox" id="student-is-attend" 
+                    	<label class="form-check-label " for="student-is-attend">在学中</label>
+                            <input style="accent-color: var(--bs-primary);" type="checkbox" id="student-is-attend" 
                                    name="is_attend" value="t" <c:if test="${student.isAttend()}">checked</c:if>>
                 </div>
 
