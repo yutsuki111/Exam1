@@ -6,10 +6,12 @@ import java.util.List;
 
 import bean.School;
 import bean.Student;
+import bean.Teacher;
 import dao.ClassNumDao;
 import dao.StudentDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class StudentUpdateAction extends Action {
@@ -21,9 +23,9 @@ public class StudentUpdateAction extends Action {
 		// 一覧画面の「変更」リンクから送られてくる ?no=... を受け取る
 		String no = req.getParameter("no");
 
-		// 【テスト用】学校情報の固定
-		School school = new School();
-		school.setCd("oom");
+		HttpSession session = req.getSession();
+		Teacher teacher = (Teacher) session.getAttribute("user");
+		School school = teacher.getSchool();
 
 		// 2. DBから現在の学生情報を取得
 		StudentDao sDao = new StudentDao();
