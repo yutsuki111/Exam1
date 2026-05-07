@@ -69,7 +69,7 @@
                     <div class="col-4">
                         <label class="form-label" for="f4">学生番号</label>
                         <input type="text" class="form-control" id="f4" name="f4" 
-                               placeholder="学生番号を入力してください" value="${f4}">
+                               placeholder="学生番号を入力してください" value="${f4}" required>
                     </div>
 
                     <%-- 検索ボタン --%>
