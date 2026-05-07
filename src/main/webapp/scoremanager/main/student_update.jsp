@@ -6,7 +6,7 @@
 
     <c:param name="content">
         <section class="me-4">
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4  fw-bold">学生情報変更</h2>
 
             <form action="StudentUpdateExecute.action" method="post" class="mx-4">
                 
@@ -56,8 +56,8 @@
 
                 <%-- 在学中チェックボックス --%>
                 <div class="mb-4">
-                    	<label class="form-check-label" for="student-is-attend">在学中</label>
-                            <input class="" type="checkbox" id="student-is-attend" 
+                    	<label class="form-check-label " for="student-is-attend">在学中</label>
+                            <input style="accent-color: var(--bs-primary);" type="checkbox" id="student-is-attend" 
                                    name="is_attend" value="t" <c:if test="${student.isAttend()}">checked</c:if>>
                 </div>
 

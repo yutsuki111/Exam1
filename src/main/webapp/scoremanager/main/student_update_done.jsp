@@ -13,14 +13,14 @@
 
         <section class="me-4">
 
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報変更</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">学生情報変更</h2>
             <!-- 学生情報変更完了画面 -->
 
             <div class="text-center" style="background-color: #6EC8B5;">
                 変更が完了しました
             </div>
             <!-- 成功メッセージ -->
-			<div style="padding-top: 50px;">
+			<div style="padding-top: 90px;">
             	<a href="StudentList.action">学生一覧</a>
             </div>
             <!-- 学生一覧画面へのリンク -->

@@ -13,14 +13,14 @@
 
         <section class="me-4">
 
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">学生情報登録</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">学生情報登録</h2>
             <!-- 見出し：学生情報登録完了画面 -->
 
             <div class="text-center" style="background-color: #6EC8B5;">
     			登録が完了しました
 			</div>
 
-			<div class="row" style="padding-top: 50px;">
+			<div class="row" style="padding-top: 90px;">
     			<div class="col-2">
         			<a href="StudentCreate.action">戻る</a>
     			</div>
