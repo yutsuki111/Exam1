@@ -114,7 +114,6 @@
                                 </table>
                             </c:when>
                             <c:otherwise>
-                                <%-- ★追加：成績がない場合はテーブルを表示せず、メッセージを出す --%>
                                 <div>成績情報が存在しませんでした</div>
                             </c:otherwise>
                         </c:choose>
