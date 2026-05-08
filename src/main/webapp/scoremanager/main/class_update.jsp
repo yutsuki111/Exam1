@@ -15,7 +15,9 @@
                     <label class="col-form-label ">クラス名</label>
                     <div class="ms-3">
                         <input type="text" class="form-control-plaintext" name="class_num" 
-                               value="${class_num}" required>
+                               value="${num.class_num}" required>
+                        <input type="hidden" name="old_class_num" value="${subject.cd}">
+                       <p>${errortext }</p>
                     </div>
                 </div>
                 <%-- 変更ボタン --%>

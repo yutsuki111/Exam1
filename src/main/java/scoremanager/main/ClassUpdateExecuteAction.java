@@ -1,22 +1,22 @@
 package scoremanager.main;
 
+import bean.ClassNum;
 import bean.School;
-import bean.Subject;
 import bean.Teacher;
-import dao.SubjectDao;
+import dao.ClassNumDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class SubjectUpdateExecuteAction extends Action {
+public class ClassUpdateExecuteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// リクエストパラメータの取得
-		String cd = req.getParameter("cd");
-		String name = req.getParameter("name");
+		String class_num = req.getParameter("class_num");
+		String old_class_num = req.getParameter("old_class_num");
 
 		// セッションを取得
 		HttpSession session = req.getSession(); 
@@ -26,27 +26,26 @@ public class SubjectUpdateExecuteAction extends Action {
 		School school = teacher.getSchool();
 		
 		// インスタンス化
-		Subject subject = new Subject();
+		ClassNum num = new ClassNum();
 		
 		// 更新用データの作成
-		subject.setCd(cd);
-		subject.setName(name);
-		subject.setSchool(school);
-
+		num.setClass_num(class_num);
+		num.setSchool(school);
+		
 		// DB更新実行
-		SubjectDao subDao = new SubjectDao();
+		ClassNumDao numDao = new ClassNumDao();
 		// StudentDaoのsaveメソッドは、内部でgetして存在すればUPDATEを実行する仕様なのでこれだけでOK
-		boolean result = subDao.save(subject);
+		boolean result = numDao.save(num, old_class_num);
 		// フラグがない場合
 		if(!result) {
 			// リクエストデータにセット
-			req.setAttribute("errortext", "科目が存在していません");
-			req.setAttribute("subject", subject);
+			req.setAttribute("errortext", "クラスが存在していません");
+			req.setAttribute("num", num);
 			// subject_update.jspにフォア―ド
-			req.getRequestDispatcher("subject_update.jsp").forward(req, res);
+			req.getRequestDispatcher("class_update.jsp").forward(req, res);
 			return;
 		}
 		// 5. 完了画面へフォワード
-		req.getRequestDispatcher("subject_update_done.jsp").forward(req, res);
+		req.getRequestDispatcher("class_update_done.jsp").forward(req, res);
 	}
 }

@@ -33,7 +33,7 @@
 		<td>${c}</td>
 		<td>
 		<!-- 変更リンク -->
-		<a href="ClassUpdate.action?cd=${c}">変更</a>
+		<a href="ClassUpdate.action?class_num=${c}">変更</a>
 		</td>
 		</tr>
 		</c:forEach>
