@@ -14,9 +14,9 @@
                 <div class="mb-2">
                     <label class="col-form-label ">クラス名</label>
                     <div class="ms-3">
-                        <input type="text" class="form-control-plaintext" name="class_num" 
-                               value="${num.class_num}" required>
-                        <input type="hidden" name="old_class_num" value="${subject.cd}">
+                        <input type="text" class="form-control" name="class_num" placeholder="クラス名を入力して下さい"
+                               value="${class_num.class_num}" maxlength="5" required>
+                        <input type="hidden" name="old_class_num" value="${class_num.class_num}">
                        <p>${errortext }</p>
                     </div>
                 </div>

@@ -36,24 +36,22 @@ public class ClassUpdateExecuteAction extends Action {
 			// リクエストにデータをセット
 			req.setAttribute("errortext", "クラス名が重複しています");
 			num.setClass_num(class_num);
-			req.setAttribute("num", num);
+			req.setAttribute("class_num", num);
 			// ubject_create.jspにフォア―ド
 			req.getRequestDispatcher("class_update.jsp").forward(req, res);
 			return;
 		}
 		// 更新用データの作成
-		num.setClass_num(class_num);
+		num.setClass_num(old_class_num);
 		num.setSchool(school);
 		
-		
-		// StudentDaoのsaveメソッドは、内部でgetして存在すればUPDATEを実行する仕様なのでこれだけでOK
-		boolean result = numDao.save(num, old_class_num);
+		boolean result = numDao.save(num, class_num);
 		
 		// フラグがない場合
 		if(!result) {
 			// リクエストデータにセット
 			req.setAttribute("errortext", "クラスが存在していません");
-			req.setAttribute("num", num);
+			req.setAttribute("class_num", num);
 			// subject_update.jspにフォア―ド
 			req.getRequestDispatcher("class_update.jsp").forward(req, res);
 			return;
