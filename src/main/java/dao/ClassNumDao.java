@@ -250,7 +250,7 @@ public class ClassNumDao extends Dao {
 			}
 		}
 
-		if (count > 3) {
+		if (count >= 1) {
 			// 実行件数が3件以上ある場合
 			return true;
 		} else {
