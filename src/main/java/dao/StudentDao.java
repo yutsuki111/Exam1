@@ -72,6 +72,66 @@ public class StudentDao extends Dao {
 
 		return student;
 	}
+	// 学生番号と学校コードの両方で検索するメソッド
+		public Student get(String no, School school) throws Exception {
+
+			// 学生インスタンスを初期化
+			Student student = new Student();
+			// データベースへのコネクションを確立
+			Connection connection = getConnection();
+			// プリペアードステートメント
+			PreparedStatement statement = null;
+
+			try {
+				// SQL文に school_cd の条件を追加
+				statement = connection.prepareStatement("select * from student where no = ? and school_cd = ?");
+				// プリペアードステートメントに値をバインド
+				statement.setString(1, no);
+				statement.setString(2, school.getCd());
+				
+				// プリペアードステートメントを実行
+				ResultSet resultSet = statement.executeQuery();
+
+				// 学校Daoを初期化
+				SchoolDao schoolDao = new SchoolDao();
+
+				if (resultSet.next()) {
+					// リザルトセットが存在する場合
+					// 学生インスタンスに検索結果をセット
+					student.setNo(resultSet.getString("no"));
+					student.setName(resultSet.getString("name"));
+					student.setEntYear(resultSet.getInt("ent_year"));
+					student.setClassNum(resultSet.getString("class_num"));
+					student.setAttend(resultSet.getBoolean("is_attend"));
+					// 学生フィールドには学校コードで検索した学校インスタンスをセット
+					student.setSchool(schoolDao.get(resultSet.getString("school_cd")));
+				} else {
+					// リザルトセットが存在しない場合（他校の生徒の場合もここに入ります）
+					student= null;
+				}
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				// プリペアードステートメントを閉じる
+				if (statement != null) {
+					try {
+						statement.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+				// コネクションを閉じる
+				if (connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
+				}
+			}
+
+			return student;
+		}
 
 	private List<Student> postFilter(ResultSet resultSet, School school) throws Exception {
 

@@ -25,14 +25,13 @@ public class TestListStudentExecuteAction extends Action {
         HttpSession session = req.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
         
-        // ★追加：ログイン中の先生の所属校を取得（クラスや科目の絞り込みに必要）
         School school = teacher.getSchool();
 
         String studentNo = req.getParameter("f4"); // 学生番号
 
         // 学生情報を取得
         StudentDao sDao = new StudentDao();
-        Student student = sDao.get(studentNo);
+        Student student = sDao.get(studentNo, school);
 
         if (student != null) {
             // 成績リストを取得

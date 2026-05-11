@@ -28,7 +28,9 @@ public class TestRegistExecuteAction extends Action {
         HttpSession session = req.getSession();
         Teacher teacher = (Teacher) session.getAttribute("user");
         School school = teacher.getSchool();
-
+        
+        String entYearStr = req.getParameter("f1");
+        String classNum = req.getParameter("f2");
         // JSPのhidden項目から科目と回数を取得
         String subjectCd = req.getParameter("subject_cd");
         int num = Integer.parseInt(req.getParameter("num"));
@@ -65,7 +67,6 @@ public class TestRegistExecuteAction extends Action {
                 if (pointsStr[i] != null && !pointsStr[i].isEmpty()) {
                     point = Integer.parseInt(pointsStr[i]);
                     
-                    // ★追加：0～100の範囲外ならエラーを追加する
                     if (point < 0 || point > 100) {
                         errors.put(studentNos[i], "0～100の範囲で入力してください");
                     }
@@ -76,10 +77,11 @@ public class TestRegistExecuteAction extends Action {
             }
         }
 
-        // ★追加：エラーがあった場合の処理（DBには保存せず、元の画面に戻す）
         if (!errors.isEmpty()) {
             req.setAttribute("errors", errors); // エラーメッセージをセット
             req.setAttribute("tests", tests);   // 入力途中の点数を残すためにセット
+            req.setAttribute("f1", entYearStr); 
+            req.setAttribute("f2", classNum);
             req.setAttribute("f3", subjectCd);  // 科目の選択状態を保持
             req.setAttribute("f4", num);        // 回数の選択状態を保持
 

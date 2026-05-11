@@ -63,7 +63,6 @@
                         <select class="form-select" id="f4" name="f4">
                             <option value="0">--------</option>
                             <c:forEach var="n" items="${num_set}">
-                                <%-- ★「第〇回」の指定を外し、元の数字のみに戻しました --%>
                                 <option value="${n}" <c:if test="${n == f4}">selected</c:if>>
                                     ${n}
                                 </option>
@@ -87,8 +86,8 @@
                         <p>科目：${tests[0].subject.name} （${f4}回）</p>
 
                         <form action="TestRegistExecute.action" method="post">
-
-                            <%-- 科目コードと回数を送信する hidden --%>
+							<input type="hidden" name="f1" value="${f1}"> 
+							<input type="hidden" name="f2" value="${f2}"> 
                             <input type="hidden" name="subject_cd" value="${f3}">
                             <input type="hidden" name="num" value="${f4}">
 
