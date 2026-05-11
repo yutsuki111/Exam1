@@ -142,17 +142,17 @@
                 <%-- ◆ 検索条件が未入力 or 該当学生なし --%>
                 <c:otherwise>
                     <div class="mx-4 mt-4 text-muted">
-
-                        <%-- 条件は選んだが該当学生がいない場合 --%>
-                        <c:if test="${not empty f1 and f1 != '0'}">
-                            該当する学生が見つかりませんでした。
-                        </c:if>
-
-                        <%-- 条件未選択の場合 --%>
-                        <c:if test="${empty f1 or f1 == '0'}">
-                            条件を選択して検索してください。
-                        </c:if>
-
+                        <c:choose>
+                            <%-- 4つの条件すべてが選択されているが、該当データがない場合 --%>
+                            <c:when test="${f1 != 0 and not empty f2 and f2 != '0' and not empty f3 and f3 != '0' and f4 != 0}">
+                                該当する学生が見つかりませんでした。
+                            </c:when>
+                            
+                            <%-- いずれかの条件が未選択（初期表示を含む）の場合 --%>
+                            <c:otherwise>
+                                入学年度とクラスと科目と回数を選択してください
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </c:otherwise>
             </c:choose>
