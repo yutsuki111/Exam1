@@ -21,9 +21,6 @@ public class Dao {
     /**
      * getConnection メソッド
      * データベースへの接続（Connection）を取得して返す
-     *
-     * @return データベースへの接続情報
-     * @throws Exception
      */
     public Connection getConnection() throws Exception {
 

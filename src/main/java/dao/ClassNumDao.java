@@ -70,10 +70,6 @@ public class ClassNumDao extends Dao {
 
 	/**
 	 * filterメソッド 学校を指定してクラス番号の一覧を取得する
-	 *
-	 * @param school:School
-	 * @return クラス番号の一覧:List<String>
-	 * @throws Exception
 	 */
 	public List<String> filter(School school) throws Exception {
 		// リストを初期化
