@@ -102,7 +102,7 @@ public class TestRegistExecuteAction extends Action {
 
             // 登録画面へフォワードしてエラーを表示させる
             req.getRequestDispatcher("test_regist.jsp").forward(req, res);
-            return; // ★ここで処理を終了させる（下のsaveに行かせない）
+            return;
         }
 
         // エラーが無ければ、DAOを呼んで一括保存（INSERT または UPDATE）
