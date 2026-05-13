@@ -14,7 +14,7 @@
         <section class="me-4">
 
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">クラス変更</h2>
-            <!-- 学生情報変更完了画面 -->
+            <!-- クラス情報変更完了画面 -->
 
             <div class="text-center" style="background-color: #6EC8B5;">
                 変更が完了しました
@@ -23,7 +23,7 @@
 			<div style="padding-top: 90px;">
             	<a href="ClassList.action">クラス一覧</a>
             </div>
-            <!-- 学生一覧画面へのリンク -->
+            <!-- クラス一覧画面へのリンク -->
 
         </section>
     </c:param>

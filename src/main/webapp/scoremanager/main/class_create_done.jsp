@@ -14,7 +14,7 @@
         <section class="me-4">
 
             <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4 fw-bold">クラス登録</h2>
-            <!-- 見出し：学生情報登録完了画面 -->
+            <!-- 見出し：クラス情報登録完了画面 -->
 
             <div class="text-center" style="background-color: #6EC8B5;">
     			登録が完了しました

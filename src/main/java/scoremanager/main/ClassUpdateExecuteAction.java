@@ -52,7 +52,7 @@ public class ClassUpdateExecuteAction extends Action {
 			// リクエストデータにセット
 			req.setAttribute("errortext", "クラスが存在していません");
 			req.setAttribute("class_num", num);
-			// subject_update.jspにフォア―ド
+			// class_update.jspにフォア―ド
 			req.getRequestDispatcher("class_update.jsp").forward(req, res);
 			return;
 		}

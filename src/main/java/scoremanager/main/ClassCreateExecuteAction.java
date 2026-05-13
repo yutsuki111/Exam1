@@ -43,7 +43,7 @@ public class ClassCreateExecuteAction extends Action {
 		// saveメソッドを呼び出し（追加）
 		numDao.save(class_num);
 		
-		// subject_create_done.jspにフォア―ド
+		// class_create_done.jspにフォア―ド
 		req.getRequestDispatcher("class_create_done.jsp").forward(req, res);
 		
 	}

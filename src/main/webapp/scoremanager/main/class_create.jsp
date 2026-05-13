@@ -25,7 +25,7 @@
     </div>
 	</form>
 	<div class="mb-3">
-	<!-- 科目一覧に戻る -->
+	<!-- クラス一覧に戻る -->
 	<a href="ClassList.action">戻る</a>
 	</c:param>
 

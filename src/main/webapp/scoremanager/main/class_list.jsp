@@ -22,7 +22,7 @@
 		<div class="my-2 text-end px-4">
 				<a href="ClassCreate.action">新規登録</a>
 		</div>
-		<!-- 科目テーブル -->
+		<!-- クラステーブル -->
 		<table style="width:100%; table-layout: fixed;" >
 		<tr>
 		<th style="width: 75%;">クラス名</th>
