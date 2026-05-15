@@ -32,20 +32,25 @@ public class SubjectUpdateExecuteAction extends Action {
 		subject.setCd(cd);
 		subject.setName(name);
 		subject.setSchool(school);
-
+		
 		// DB更新実行
-		SubjectDao subDao = new SubjectDao();
-		// StudentDaoのsaveメソッドは、内部でgetして存在すればUPDATEを実行する仕様なのでこれだけでOK
-		boolean result = subDao.save(subject);
-		// フラグがない場合
-		if(!result) {
-			// リクエストデータにセット
-			req.setAttribute("errortext", "科目が存在していません");
-			req.setAttribute("subject", subject);
-			// subject_update.jspにフォア―ド
-			req.getRequestDispatcher("subject_update.jsp").forward(req, res);
-			return;
-		}
+				SubjectDao subDao = new SubjectDao();
+
+				//更新対象のデータが現在も存在するか確認する
+				Subject existingSubject = subDao.get(cd, school);
+
+				// 存在しない（別の画面で削除された）場合
+				if (existingSubject == null) {
+					// リクエストデータにセット
+					req.setAttribute("errortext", "科目が存在していません");
+					req.setAttribute("subject", subject);
+					// subject_update.jspにフォア―ド
+					req.getRequestDispatcher("subject_update.jsp").forward(req, res);
+					return;
+				}
+
+				// 存在が確認できた場合のみ、saveメソッドを実行
+				subDao.save(subject);
 		// 5. 完了画面へフォワード
 		req.getRequestDispatcher("subject_update_done.jsp").forward(req, res);
 	}

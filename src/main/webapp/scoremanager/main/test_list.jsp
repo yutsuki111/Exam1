@@ -7,7 +7,7 @@
     <c:param name="content">
         <section class="me-4">
             <%-- ヘッダー部分 --%>
-            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
+            <h2 class="h3 mb-3 fw-normal bg-secondary bg-opacity-10 py-2 px-4">成績管理</h2>
 
 				<%-- 検索フィルター外枠（3画面共通でこのコードを使用します） --%>
 				<div class="border mx-3 mb-3 p-3 rounded shadow-sm bg-light">

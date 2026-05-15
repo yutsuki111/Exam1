@@ -16,9 +16,14 @@
                     <div class="ms-3">
                  		<p>${subject.cd}</p>
                  		<input type="hidden" name="cd" value="${subject.cd}">
-                       <p>${errortext }</p>
                     </div>
                 </div>
+                
+                <c:if test="${not empty errortext}">
+				    <div style="color: #ff5722; font-weight: bold; margin-bottom: 10px;">
+				        ${errortext}
+				    </div>
+				</c:if>
 
                 <%--科目 --%>
                 <div class="mb-3 row">
@@ -27,6 +32,7 @@
                         <input type="text" id="name" name="name" value="${subject.name}" class="form-control" maxlength="20"  required>
                     </div>
                 </div>
+                
 
                 <%-- 変更ボタン --%>
                 <div class="mt-4">
